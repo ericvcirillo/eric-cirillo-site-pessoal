@@ -78,6 +78,7 @@ export const pt: Content = {
     ],
     recognition:
       "Reconhecido pela diretoria no comitê interno de IA e aprovado para publicação corporativa.",
+    caseCta: "Ver case completo",
   },
   experience: {
     label: "Experiência",
@@ -107,6 +108,7 @@ export const pt: Content = {
         line: "Primeira experiência profissional, em vendas e relacionamento com o cliente, antes da virada para tecnologia e antifraude.",
       },
     ],
+    detailCta: "Ver experiência detalhada",
   },
   skills: {
     label: "Competências",

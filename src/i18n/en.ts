@@ -78,6 +78,7 @@ export const en: Content = {
     ],
     recognition:
       "Recognized by leadership at the internal AI committee and approved for corporate publication.",
+    caseCta: "See full case",
   },
   experience: {
     label: "Experience",
@@ -107,6 +108,7 @@ export const en: Content = {
         line: "First professional experience, in sales and client relationships, before the turn toward technology and fraud.",
       },
     ],
+    detailCta: "See full experience",
   },
   skills: {
     label: "Skills",

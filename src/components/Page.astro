@@ -24,9 +24,9 @@ const { locale, t } = Astro.props;
   <main id="main">
     <Hero t={t} />
     <Stats t={t} />
-    <About t={t} storyHref={locale === "pt" ? "/historia" : undefined} />
-    <Experience t={t} detailHref={locale === "pt" ? "/experiencia" : undefined} />
-    <Studio t={t} caseHref={locale === "pt" ? "/studio" : undefined} />
+    <About t={t} storyHref={locale === "pt" ? "/historia" : "/en/historia"} />
+    <Experience t={t} detailHref={locale === "pt" ? "/experiencia" : "/en/experiencia"} />
+    <Studio t={t} caseHref={locale === "pt" ? "/studio" : "/en/studio"} />
     <Skills t={t} />
     <Contact t={t} />
   </main>

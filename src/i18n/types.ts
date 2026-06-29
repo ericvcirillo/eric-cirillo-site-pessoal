@@ -61,10 +61,12 @@ export interface Content {
     modules: Module[];
     metrics: KV[];
     recognition: string;
+    caseCta: string;
   };
   experience: {
     label: string;
     items: ExperienceItem[];
+    detailCta: string;
   };
   skills: {
     label: string;
