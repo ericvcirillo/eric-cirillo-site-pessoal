@@ -7,7 +7,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "cv": "node scripts/cv-to-pdf.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
@@ -22,6 +23,10 @@
   "allowScripts": {
     "esbuild@0.25.12": true,
     "esbuild@0.27.7": true,
-    "sharp@0.34.5": true
+    "sharp@0.34.5": true,
+    "puppeteer@25.2.1": true
+  },
+  "devDependencies": {
+    "puppeteer": "^25.2.1"
   }
 }
