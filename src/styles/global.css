@@ -172,7 +172,9 @@
     display: none !important;
   }
   .about-portrait {
-    max-width: 280px !important;
+    max-width: 160px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
   .ghost-num {
     font-size: 120px !important;
