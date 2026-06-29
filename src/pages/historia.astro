@@ -1,0 +1,20 @@
+---
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Story from "../components/Story.astro";
+import { getContent } from "../i18n";
+import { getStory } from "../i18n/story";
+
+const locale = "pt" as const;
+const t = getContent(locale);
+const s = getStory(locale);
+// Sobrescreve o meta da home pelo meta da história
+const tStory = { ...t, meta: { ...t.meta, ...s.meta, ogAlt: t.meta.ogAlt } };
+---
+
+<Base locale={locale} t={tStory} ogSlug="og-historia">
+  <Header locale={locale} t={t} langs={{ pt: "/historia", en: "/en/historia" }} />
+  <Story locale={locale} />
+  <Footer t={t} />
+</Base>

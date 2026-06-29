@@ -1,0 +1,50 @@
+---
+import type { Content } from "../i18n";
+
+interface Props {
+  t: Content;
+}
+
+const { t } = Astro.props;
+const CV_FILE = "/docs/Eric_Cirillo_CV_2026.pdf";
+const mono =
+  "font-family:var(--font-mono); font-size:11px; letter-spacing:0.16em; text-transform:uppercase;";
+---
+
+<section
+  id="top"
+  class="container"
+  style="position:relative; padding-top:clamp(72px,11vw,140px); padding-bottom:clamp(60px,8vw,100px);"
+>
+  <div style="display:flex; align-items:center; gap:10px; margin-bottom:30px;">
+    <span
+      style="width:6px; height:6px; border-radius:50%; background:var(--accent); display:inline-block;"
+      aria-hidden="true"></span>
+    <span
+      style="font-family:var(--font-mono); font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--text-2);"
+      >{t.hero.eyebrow}</span
+    >
+  </div>
+
+  <h1
+    style="font-family:var(--font-display); font-weight:600; font-size:clamp(56px,11.5vw,168px); line-height:0.9; letter-spacing:-0.04em; margin:0; color:var(--text);"
+  >
+    {t.hero.name}
+  </h1>
+
+  <p
+    style="font-size:clamp(16px,1.5vw,19px); line-height:1.6; color:var(--text-2); max-width:56ch; margin:38px 0 0;"
+  >
+    {t.hero.sub}
+  </p>
+
+  <div style="display:flex; flex-wrap:wrap; gap:14px; margin-top:42px;">
+    <a
+      href={CV_FILE}
+      download
+      class="cta-secondary lk"
+      style={`${mono} color:var(--text-2); border:1px solid var(--rule); padding:15px 24px;`}
+      >{t.hero.cta2}</a
+    >
+  </div>
+</section>

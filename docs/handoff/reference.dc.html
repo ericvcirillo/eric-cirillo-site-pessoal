@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth; scroll-padding-top:84px;}
+  body{margin:0; background:#0B0B0C; overflow-x:hidden;}
+  ::selection{background:rgba(159,177,198,0.30);}
+  :focus-visible{outline:2px solid var(--accent,#9FB1C6); outline-offset:3px;}
+  a{color:inherit; text-decoration:none;}
+  @media (max-width:768px){
+    .two-col{grid-template-columns:1fr !important; gap:28px !important;}
+    .ghost-num{font-size:120px !important; top:24px !important;}
+    .nav-links{display:none !important;}
+    .about-grid{grid-template-columns:1fr !important;}
+    .about-portrait{max-width:280px !important;}
+  }
+</style>
+</helmet>
+<div style="{{ rootStyle }}">
+
+  <header style="position:sticky; top:0; z-index:50; backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); background:var(--bg-blur); border-bottom:1px solid var(--rule);">
+    <div style="max-width:1180px; margin:0 auto; padding:15px 40px; display:flex; align-items:center; justify-content:space-between; gap:24px;">
+      <a href="#top" style="font-family:'Inter Tight',sans-serif; font-weight:600; font-size:16px; letter-spacing:-0.01em; color:var(--text);">Eric Cirillo</a>
+      <nav style="display:flex; gap:26px; align-items:center;">
+        <span class="nav-links" style="display:flex; gap:26px; align-items:center;">
+          <a href="#sobre" style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--text-2);" style-hover="color:var(--text);">{{ navAbout }}</a>
+          <a href="#studio" style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--text-2);" style-hover="color:var(--text);">{{ navStudio }}</a>
+          <a href="#experiencia" style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--text-2);" style-hover="color:var(--text);">{{ navExp }}</a>
+          <a href="#contato" style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--text-2);" style-hover="color:var(--text);">{{ navContact }}</a>
+        </span>
+        <span style="width:1px; height:14px; background:var(--rule-strong);"></span>
+        <span style="display:flex; gap:7px; align-items:center;">
+          <button onClick="{{ setPt }}" style="{{ ptBtnStyle }}">PT</button>
+          <span style="font-family:'Geist Mono',monospace; font-size:11px; color:var(--meta);">/</span>
+          <button onClick="{{ setEn }}" style="{{ enBtnStyle }}">EN</button>
+        </span>
+        <button onClick="{{ toggleTheme }}" aria-label="theme" style="display:flex; align-items:center; gap:7px; background:none; border:1px solid var(--rule-strong); padding:6px 11px; cursor:pointer; color:var(--text-2);" style-hover="color:var(--text); border-color:var(--accent);">
+          <span style="width:9px; height:9px; border-radius:50%; background:var(--accent); display:inline-block;"></span>
+          <span style="font-family:'Geist Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase;">{{ themeLabel }}</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <section id="top" style="position:relative; max-width:1180px; margin:0 auto; padding:clamp(72px,11vw,140px) 40px clamp(60px,8vw,100px);">
+    <div style="display:flex; align-items:center; gap:10px; margin-bottom:30px;">
+      <span style="width:6px; height:6px; border-radius:50%; background:var(--accent); display:inline-block;"></span>
+      <span style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--text-2);">{{ heroEyebrow }}</span>
+    </div>
+    <h1 style="font-family:'Inter Tight',sans-serif; font-weight:600; font-size:clamp(56px,11.5vw,168px); line-height:0.9; letter-spacing:-0.04em; margin:0; color:var(--text);">{{ heroName }}</h1>
+    <p style="font-family:'Inter Tight',sans-serif; font-weight:500; font-size:clamp(24px,3.6vw,46px); line-height:1.08; letter-spacing:-0.015em; color:var(--text); max-width:17ch; margin:38px 0 0;">{{ heroStatement }}</p>
+    <p style="font-size:clamp(16px,1.5vw,19px); line-height:1.6; color:var(--text-2); max-width:56ch; margin:24px 0 0;">{{ heroSub }}</p>
+    <div style="display:flex; flex-wrap:wrap; gap:14px; margin-top:42px;">
+      <a href="#studio" style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--text); border:1px solid var(--rule-strong); padding:15px 24px;" style-hover="border-color:var(--accent); color:var(--accent); background:var(--surface);">{{ heroCta1 }}</a>
+      <a href="#contato" style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--text-2); border:1px solid var(--rule); padding:15px 24px;" style-hover="color:var(--text); border-color:var(--rule-strong);">{{ heroCta2 }}</a>
+    </div>
+  </section>
+
+  <section style="border-top:1px solid var(--rule);">
+    <div style="max-width:1180px; margin:0 auto; padding:0 40px; display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr));">
+      <sc-for list="{{ stats }}" as="s" hint-placeholder-count="5">
+        <div style="padding:clamp(38px,5vw,58px) 24px clamp(38px,5vw,58px) 28px; border-left:1px solid var(--rule);">
+          <div style="font-family:'Inter Tight',sans-serif; font-weight:600; font-size:clamp(40px,5vw,64px); line-height:1; letter-spacing:-0.03em; color:var(--text);">{{ s.v }}</div>
+          <div style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--text-2); margin-top:13px;">{{ s.l }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="sobre" style="position:relative; border-top:1px solid var(--rule);">
+    <div style="max-width:1180px; margin:0 auto; padding:clamp(80px,10vw,130px) 40px; position:relative;">
+      <span class="ghost-num" aria-hidden="true" style="position:absolute; top:40px; right:40px; font-family:'Inter Tight',sans-serif; font-weight:600; font-size:clamp(140px,20vw,300px); line-height:0.8; color:var(--ghost); pointer-events:none; user-select:none; z-index:0;">01</span>
+      <div class="about-grid two-col" style="position:relative; z-index:1; display:grid; grid-template-columns:minmax(0,300px) minmax(0,1fr); gap:clamp(36px,6vw,80px); align-items:start;">
+        <div>
+          <div class="about-portrait" style="position:relative; width:100%; aspect-ratio:1/1; border-radius:50%; padding:7px; background:var(--panel); border:1px solid var(--rule-strong); box-shadow:var(--shadow);">
+            <img src="assets/eric.png" alt="Eric Cirillo" style="display:block; width:100%; height:100%; object-fit:cover; object-position:50% 30%; border-radius:50%;">
+          </div>
+          <div style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-2); margin-top:18px;">{{ aboutLabel }}</div>
+        </div>
+        <div style="max-width:62ch; padding-top:6px;">
+          <p style="font-family:'Inter Tight',sans-serif; font-weight:500; font-size:clamp(20px,2vw,27px); line-height:1.45; letter-spacing:-0.01em; color:var(--text); margin:0;">{{ aboutP1 }}</p>
+          <p style="font-size:17px; line-height:1.65; color:var(--text-2); margin:26px 0 0;">{{ aboutP2 }}</p>
+          <p style="font-size:17px; line-height:1.65; color:var(--text-2); margin:20px 0 0;">{{ aboutP3 }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="studio" style="position:relative; border-top:1px solid var(--rule);">
+    <div style="max-width:1180px; margin:0 auto; padding:clamp(80px,10vw,130px) 40px; position:relative;">
+      <span class="ghost-num" aria-hidden="true" style="position:absolute; top:40px; right:40px; font-family:'Inter Tight',sans-serif; font-weight:600; font-size:clamp(140px,20vw,300px); line-height:0.8; color:var(--ghost); pointer-events:none; user-select:none; z-index:0;">02</span>
+      <div style="position:relative; z-index:1;">
+        <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; align-items:baseline;">
+          <div style="display:flex; align-items:center; gap:14px;">
+            <span style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--accent);">{{ studioLabel }}</span>
+            <span style="font-family:'Geist Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--meta); border:1px solid var(--rule-strong); padding:4px 9px;">{{ studioTag }}</span>
+          </div>
+          <span style="font-family:'Geist Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--meta);">{{ studioStack }}</span>
+        </div>
+        <h2 style="font-family:'Inter Tight',sans-serif; font-weight:600; font-size:clamp(40px,6vw,84px); letter-spacing:-0.035em; line-height:0.95; margin:22px 0 0; color:var(--text);">{{ studioTitle }}</h2>
+        <p style="font-family:'Inter Tight',sans-serif; font-weight:500; font-size:clamp(19px,2vw,26px); line-height:1.3; color:var(--text-2); margin:16px 0 0; max-width:32ch;">{{ studioKicker }}</p>
+        <p style="font-size:17px; line-height:1.65; color:var(--text-2); max-width:66ch; margin:30px 0 0;">{{ studioIntro }}</p>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:18px; margin-top:48px;">
+          <sc-for list="{{ modules }}" as="m" hint-placeholder-count="4">
+            <div style="background:var(--panel); border:1px solid var(--rule); border-radius:14px; box-shadow:var(--shadow); padding:22px 22px 26px;" style-hover="border-color:var(--rule-strong);">
+              <span style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.16em; color:var(--accent);">{{ m.n }}</span>
+              <h3 style="font-family:'Inter Tight',sans-serif; font-weight:600; font-size:clamp(20px,2vw,24px); letter-spacing:-0.01em; color:var(--text); margin:14px 0 0;">{{ m.t }}</h3>
+              <p style="font-size:15.5px; line-height:1.55; color:var(--text-2); margin:10px 0 0; max-width:38ch;">{{ m.d }}</p>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); border-top:1px solid var(--rule); margin-top:20px;">
+          <sc-for list="{{ metrics }}" as="x" hint-placeholder-count="4">
+            <div style="padding:34px 20px 34px 26px; border-left:1px solid var(--rule);">
+              <div style="font-family:'Inter Tight',sans-serif; font-weight:600; font-size:clamp(28px,3vw,40px); line-height:1; letter-spacing:-0.02em; color:var(--text);">{{ x.v }}</div>
+              <div style="font-family:'Geist Mono',monospace; font-size:10.5px; letter-spacing:0.13em; text-transform:uppercase; color:var(--text-2); margin-top:11px;">{{ x.l }}</div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="display:flex; gap:18px; align-items:stretch; margin-top:48px; max-width:62ch;">
+          <span style="width:2px; background:var(--accent); flex:none;"></span>
+          <p style="font-size:16px; line-height:1.6; color:var(--text-2); margin:0;">{{ studioRecognition }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experiencia" style="position:relative; border-top:1px solid var(--rule);">
+    <div style="max-width:1180px; margin:0 auto; padding:clamp(80px,10vw,130px) 40px; position:relative;">
+      <span class="ghost-num" aria-hidden="true" style="position:absolute; top:40px; right:40px; font-family:'Inter Tight',sans-serif; font-weight:600; font-size:clamp(140px,20vw,300px); line-height:0.8; color:var(--ghost); pointer-events:none; user-select:none; z-index:0;">03</span>
+      <div style="position:relative; z-index:1;">
+        <div style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-2); margin-bottom:8px;">{{ expLabel }}</div>
+        <sc-for list="{{ experiences }}" as="e" hint-placeholder-count="4">
+          <div class="two-col" style="display:grid; grid-template-columns:minmax(0,180px) minmax(0,1fr); gap:clamp(20px,5vw,68px); padding:clamp(28px,3vw,38px) 0; border-top:1px solid var(--rule);">
+            <div style="font-family:'Geist Mono',monospace; font-size:12px; letter-spacing:0.13em; color:var(--text-2);">{{ e.date }}</div>
+            <div>
+              <div style="display:flex; flex-wrap:wrap; align-items:baseline; gap:12px;">
+                <h3 style="font-family:'Inter Tight',sans-serif; font-weight:600; font-size:clamp(22px,2.4vw,30px); letter-spacing:-0.02em; margin:0; color:var(--text);">{{ e.company }}</h3>
+                <span style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--meta);">{{ e.role }}</span>
+              </div>
+              <p style="font-size:16px; line-height:1.6; color:var(--text-2); margin:13px 0 0; max-width:64ch;">{{ e.line }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="position:relative; border-top:1px solid var(--rule);">
+    <div style="max-width:1180px; margin:0 auto; padding:clamp(80px,10vw,130px) 40px; position:relative;">
+      <span class="ghost-num" aria-hidden="true" style="position:absolute; top:40px; right:40px; font-family:'Inter Tight',sans-serif; font-weight:600; font-size:clamp(140px,20vw,300px); line-height:0.8; color:var(--ghost); pointer-events:none; user-select:none; z-index:0;">04</span>
+      <div class="two-col" style="position:relative; z-index:1; display:grid; grid-template-columns:minmax(0,200px) minmax(0,1fr); gap:clamp(30px,6vw,80px); align-items:start;">
+        <div style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-2);">{{ skillsLabel }}</div>
+        <div>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:0 30px;">
+            <sc-for list="{{ competencias }}" as="c" hint-placeholder-count="9">
+              <div style="display:flex; gap:11px; align-items:baseline; border-top:1px solid var(--rule); padding:13px 0;">
+                <span style="width:4px; height:4px; background:var(--accent); flex:none; margin-top:7px;"></span>
+                <span style="font-size:15px; color:var(--text); line-height:1.4;">{{ c }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <div style="margin-top:48px;">
+            <div style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--text-2);">{{ produtosLabel }}</div>
+            <p style="font-family:'Inter Tight',sans-serif; font-weight:500; font-size:clamp(18px,1.8vw,23px); line-height:1.5; letter-spacing:-0.01em; color:var(--text-2); max-width:72ch; margin:14px 0 0;"><span style="color:var(--text);">{{ produtos }}</span> {{ produtosTail }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato" style="position:relative; border-top:1px solid var(--rule);">
+    <div style="max-width:1180px; margin:0 auto; padding:clamp(80px,10vw,130px) 40px; position:relative;">
+      <span class="ghost-num" aria-hidden="true" style="position:absolute; top:40px; right:40px; font-family:'Inter Tight',sans-serif; font-weight:600; font-size:clamp(140px,20vw,300px); line-height:0.8; color:var(--ghost); pointer-events:none; user-select:none; z-index:0;">05</span>
+      <div class="two-col" style="position:relative; z-index:1; display:grid; grid-template-columns:minmax(0,1.4fr) minmax(0,1fr); gap:clamp(40px,6vw,80px); align-items:start;">
+        <div>
+          <div style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-2);">{{ contactLabel }}</div>
+          <p style="font-family:'Inter Tight',sans-serif; font-weight:500; font-size:clamp(22px,2.4vw,32px); line-height:1.25; letter-spacing:-0.015em; color:var(--text); margin:18px 0 0; max-width:24ch;">{{ contactLine }}</p>
+          <a href="mailto:eric.cirillo@email.com" style="display:inline-block; font-family:'Inter Tight',sans-serif; font-weight:600; font-size:clamp(26px,4vw,52px); letter-spacing:-0.025em; color:var(--text); margin-top:28px;" style-hover="color:var(--accent);">{{ email }}</a>
+          <div style="display:flex; flex-wrap:wrap; gap:24px; margin-top:24px;">
+            <a href="https://linkedin.com/in/ericcirillo" style="font-family:'Geist Mono',monospace; font-size:12px; letter-spacing:0.1em; color:var(--text-2);" style-hover="color:var(--text);">linkedin.com/in/ericcirillo</a>
+            <span style="font-family:'Geist Mono',monospace; font-size:12px; letter-spacing:0.1em; color:var(--meta);">{{ location }}</span>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-2);">{{ downloadsLabel }}</div>
+          <a href="#" style="display:flex; justify-content:space-between; align-items:center; gap:20px; border:1px solid var(--rule-strong); border-radius:12px; background:var(--panel); box-shadow:var(--shadow); padding:20px 22px; margin-top:16px;" style-hover="border-color:var(--accent); background:var(--surface);">
+            <span style="font-family:'Geist Mono',monospace; font-size:12px; letter-spacing:0.13em; text-transform:uppercase; color:var(--text);">{{ dl1 }}</span>
+            <span style="font-family:'Geist Mono',monospace; font-size:11px; color:var(--text-2);">PDF</span>
+          </a>
+          <a href="#" style="display:flex; justify-content:space-between; align-items:center; gap:20px; border:1px solid var(--rule-strong); border-radius:12px; background:var(--panel); box-shadow:var(--shadow); padding:20px 22px; margin-top:12px;" style-hover="border-color:var(--accent); background:var(--surface);">
+            <span style="font-family:'Geist Mono',monospace; font-size:12px; letter-spacing:0.13em; text-transform:uppercase; color:var(--text);">{{ dl2 }}</span>
+            <span style="font-family:'Geist Mono',monospace; font-size:11px; color:var(--text-2);">PDF</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="border-top:1px solid var(--rule);">
+    <div style="max-width:1180px; margin:0 auto; padding:30px 40px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:14px;">
+      <span style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-2);">{{ footerLeft }}</span>
+      <span style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--meta);">{{ footerRight }}</span>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;options&quot;:[&quot;#9FB1C6&quot;,&quot;#8FA6BF&quot;,&quot;#A9A2B4&quot;,&quot;#B7ADA0&quot;],&quot;default&quot;:&quot;#A9A2B4&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Tema&quot;},&quot;ghostNumbers&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Tema&quot;}}">
+class Component extends DCLogic {
+  state = { lang: 'pt', theme: 'dark' };
+
+  _syncBody() {
+    const dark = this.state.theme !== 'light';
+    if (document && document.body) {
+      document.body.style.background = dark ? '#0B0B0C' : '#FBFBFA';
+    }
+  }
+  componentDidMount() { this._syncBody(); }
+  componentDidUpdate() { this._syncBody(); }
+
+  renderVals() {
+    const accent = this.props.accent || '#9FB1C6';
+    const ghostOn = this.props.ghostNumbers !== false;
+    const dark = this.state.theme !== 'light';
+
+    const themes = {
+      dark: {
+        bg:'#0B0B0C', blur:'rgba(13,15,18,0.62)', surface:'#161A1F',
+        text:'#F2F2F3', text2:'#A4A6AC', meta:'#7E828B',
+        rule:'rgba(255,255,255,0.085)', ruleStrong:'rgba(255,255,255,0.17)',
+        ghost: ghostOn ? 'rgba(160,178,198,0.035)' : 'transparent',
+        bgGrad:'radial-gradient(125% 80% at 50% -12%, #1B2027 0%, #121519 38%, #0B0B0C 100%)',
+        panel:'linear-gradient(180deg, #191D23 0%, #121419 100%)',
+        panelEdge:'rgba(255,255,255,0.05)',
+        shadow:'inset 0 1px 0 rgba(255,255,255,0.045), 0 24px 60px -34px rgba(0,0,0,0.85)',
+      },
+      light: {
+        bg:'#FBFBFA', blur:'rgba(251,251,250,0.7)', surface:'#F1F1EF',
+        text:'#111113', text2:'#55555B', meta:'#8C8C92',
+        rule:'rgba(0,0,0,0.10)', ruleStrong:'rgba(0,0,0,0.20)',
+        ghost: ghostOn ? 'rgba(40,46,54,0.045)' : 'transparent',
+        bgGrad:'radial-gradient(125% 80% at 50% -12%, #FFFFFF 0%, #F6F6F3 45%, #ECECE8 100%)',
+        panel:'linear-gradient(180deg, #FFFFFF 0%, #F3F3F0 100%)',
+        panelEdge:'rgba(0,0,0,0.05)',
+        shadow:'inset 0 1px 0 rgba(255,255,255,0.7), 0 22px 48px -32px rgba(20,22,28,0.28)',
+      },
+    };
+    const t = dark ? themes.dark : themes.light;
+
+    const rootStyle = {
+      '--bg': t.bg, '--bg-blur': t.blur, '--surface': t.surface,
+      '--text': t.text, '--text-2': t.text2, '--meta': t.meta,
+      '--rule': t.rule, '--rule-strong': t.ruleStrong,
+      '--accent': accent, '--ghost': t.ghost,
+      '--panel': t.panel, '--panel-edge': t.panelEdge, '--shadow': t.shadow,
+      background: t.bgGrad, color: t.text,
+      fontFamily: "'Geist', sans-serif", fontSize: '16px', lineHeight: 1.6,
+      minHeight: '100vh', WebkitFontSmoothing: 'antialiased', textRendering: 'optimizeLegibility',
+    };
+
+    const langBtn = (on) => ({
+      fontFamily: "'Geist Mono', monospace", fontSize: '11px', letterSpacing: '0.1em',
+      background: 'none', border: 'none', padding: '2px', cursor: 'pointer',
+      color: on ? 'var(--text)' : 'var(--meta)',
+    });
+
+    const PACK = {
+      pt: {
+        navAbout:'Sobre', navStudio:'Serasa Studio', navExp:'Experiência', navContact:'Contato',
+        themeLabel: dark ? 'Claro' : 'Escuro',
+        heroEyebrow:'Implementation Specialist, Identity & Fraud',
+        heroName:'Eric Cirillo',
+        heroStatement:'Tecnologia não é o objetivo. É a ferramenta.',
+        heroSub:'Implanto soluções de Identity & Fraud de ponta a ponta. Entro depois do contrato fechado e fico até a entrada em produção.',
+        heroCta1:'Ver o Serasa Studio', heroCta2:'Baixar currículo',
+        stats:[
+          {v:'6+', l:'anos de carreira'},
+          {v:'100+', l:'clientes acompanhados'},
+          {v:'50', l:'implantações'},
+          {v:'11', l:'produtos dominados'},
+          {v:'20', l:'projetos simultâneos'},
+        ],
+        aboutLabel:'Sobre',
+        aboutP1:'Trabalho com implantação de soluções de Identity & Fraud há mais de seis anos. Comecei na operação antifraude do Nubank, passei por Professional Services na AllowMe e hoje sou a referência técnica da Serasa Experian nos projetos mais complexos.',
+        aboutP2:'Na prática, entro no projeto depois do contrato fechado. Entendo o cenário do cliente, conduzo o kickoff técnico, apoio os desenvolvedores na integração de APIs e SDKs e acompanho tudo até a entrada em produção. Conduzo essas reuniões em inglês com frequência, inclusive com times nos Estados Unidos, na Índia e na China.',
+        aboutP3:'Nos últimos anos passei a usar IA generativa para construir minhas próprias ferramentas. Para mim, tecnologia nunca foi o objetivo. É o que uso para resolver o problema que está na frente.',
+        studioLabel:'Evidência de trabalho', studioTag:'Uso interno',
+        studioStack:'React / Node.js / APIs REST / SDKs / Claude Code',
+        studioTitle:'Serasa Studio',
+        studioKicker:'Uma plataforma interna que construí sozinho.',
+        studioIntro:'O conhecimento sobre os produtos vivia espalhado. Cada especialista usava a própria ferramenta e as demonstrações dependiam de quem dominava o Postman. Construí um ambiente único, com chamadas reais a 11 produtos de Identity & Fraud, para resolver isso.',
+        modules:[
+          {n:'01', t:'Modo Demo', d:'Roda jornadas completas sem credenciais, pronto para qualquer reunião.'},
+          {n:'02', t:'Onboarding Builder', d:'Monta a jornada do cliente de ponta a ponta e gera o relatório em PDF.'},
+          {n:'03', t:'Flow Builder', d:'Desenha diagramas de fluxo antifraude dentro da própria plataforma.'},
+          {n:'04', t:'Motor data driven', d:'Cada produto descreve a própria autenticação e sequência de chamadas. Um produto novo custa pouquíssimo código.'},
+        ],
+        metrics:[
+          {v:'24k', l:'linhas de código'},
+          {v:'45', l:'componentes React'},
+          {v:'4', l:'aplicações'},
+          {v:'3 sem', l:'de trabalho, sozinho'},
+        ],
+        studioRecognition:'Reconhecido pela diretoria no comitê interno de IA e aprovado para publicação corporativa.',
+        expLabel:'Experiência',
+        experiences:[
+          {date:'JUL 2024 / ATUAL', company:'Serasa Experian', role:'Fraud Analyst III, Professional Services', line:'Referência técnica de uma carteira de clientes non banking, do kickoff técnico até a entrada em produção. Conduzo cerca de 20 projetos ao mesmo tempo e as reuniões em inglês com times nos Estados Unidos, na Índia e na China.'},
+          {date:'OUT 2022 / ABR 2024', company:'AllowMe', role:'Fraud Analyst II, Professional Services', line:'Aprendi a implantar Identity & Fraud de ponta a ponta com clientes enterprise. Identifiquei um bug não documentado no FaceMatch logo após o lançamento, reproduzi e levei ao time de produto, que confirmou a falha. (AllowMe foi adquirida pela Serasa Experian.)'},
+          {date:'MAI 2019 / JUL 2021', company:'Nubank', role:'Fraud Analyst II, I e Customer Excellence', line:'Operações de fraude financeira em escala, com KYC, fraude documental e monitoramento transacional. Foi onde entendi como a operação antifraude funciona por dentro.'},
+          {date:'2017 / 2019', company:'GF Casa Decor', role:'Comercial e atendimento', line:'Primeira experiência profissional, em vendas e relacionamento com o cliente, antes da virada para tecnologia e antifraude.'},
+        ],
+        skillsLabel:'Competências',
+        competencias:['Implantação de soluções de ponta a ponta','Integração de APIs REST e SDKs','Troubleshooting e investigação de bugs','Definição de fluxos de onboarding','Stakeholder management','Comunicação internacional em inglês','Documentação técnica e treinamento','SQL, Python, React e Node.js','IA generativa e coding agents'],
+        produtosLabel:'Produtos dominados',
+        produtos:'KYC, Biometria Facial, Liveness, FaceMatch, Device Intelligence, Documentoscopia, OCR, Background Check, Fraud Score, LVS,',
+        produtosTail:'entre outros.',
+        contactLabel:'Contato',
+        contactLine:'Aberto a conversas com times de tecnologia B2B.',
+        email:'eric.cirillo@email.com', location:'São Paulo, inglês fluente',
+        downloadsLabel:'Downloads', dl1:'Currículo', dl2:'Career Bible',
+        footerLeft:'Eric Cirillo, São Paulo', footerRight:'Documento, não vitrine. 2026',
+      },
+      en: {
+        navAbout:'About', navStudio:'Serasa Studio', navExp:'Experience', navContact:'Contact',
+        themeLabel: dark ? 'Light' : 'Dark',
+        heroEyebrow:'Implementation Specialist, Identity & Fraud',
+        heroName:'Eric Cirillo',
+        heroStatement:'Technology is not the goal. It is the tool.',
+        heroSub:'I implement Identity & Fraud solutions end to end. I come in once the contract is signed and stay until production go live.',
+        heroCta1:'See Serasa Studio', heroCta2:'Download résumé',
+        stats:[
+          {v:'6+', l:'years of experience'},
+          {v:'100+', l:'clients supported'},
+          {v:'50', l:'implementations'},
+          {v:'11', l:'products mastered'},
+          {v:'20', l:'concurrent projects'},
+        ],
+        aboutLabel:'About',
+        aboutP1:'I have worked on Identity & Fraud implementation for more than six years. I started in Nubank fraud operations, moved into Professional Services at AllowMe, and today I am the technical reference at Serasa Experian for the most complex projects.',
+        aboutP2:'In practice, I join the project after the contract is signed. I learn the client scenario, run the technical kickoff, support developers through REST API and SDK integration, and follow everything to production. I run those meetings in English often, including with teams in the United States, India, and China.',
+        aboutP3:'In recent years I started using generative AI to build my own tools. To me, technology was never the goal. It is what I use to solve the problem in front of me.',
+        studioLabel:'Proof of work', studioTag:'Internal tool',
+        studioStack:'React / Node.js / REST APIs / SDKs / Claude Code',
+        studioTitle:'Serasa Studio',
+        studioKicker:'An internal platform I built on my own.',
+        studioIntro:'Product knowledge lived scattered. Each specialist used their own tool and demos depended on whoever knew Postman. I built one single environment, with real calls to 11 Identity & Fraud products, to fix that.',
+        modules:[
+          {n:'01', t:'Demo mode', d:'Runs full journeys with no credentials, ready for any meeting.'},
+          {n:'02', t:'Onboarding Builder', d:'Assembles the client journey end to end and generates the PDF report.'},
+          {n:'03', t:'Flow Builder', d:'Draws anti fraud flow diagrams inside the platform itself.'},
+          {n:'04', t:'Data driven engine', d:'Each product describes its own authentication and call sequence. A new product costs very little code.'},
+        ],
+        metrics:[
+          {v:'24k', l:'lines of code'},
+          {v:'45', l:'React components'},
+          {v:'4', l:'applications'},
+          {v:'3 wks', l:'of work, solo'},
+        ],
+        studioRecognition:'Recognized by leadership at the internal AI committee and approved for corporate publication.',
+        expLabel:'Experience',
+        experiences:[
+          {date:'JUL 2024 / NOW', company:'Serasa Experian', role:'Fraud Analyst III, Professional Services', line:'Technical reference for a non banking client portfolio, from technical kickoff to production go live. I run about 20 projects at once and the English meetings with teams in the United States, India, and China.'},
+          {date:'OCT 2022 / APR 2024', company:'AllowMe', role:'Fraud Analyst II, Professional Services', line:'I learned to implement Identity & Fraud end to end with enterprise clients. I found an undocumented bug in FaceMatch right after launch, reproduced it, and took it to the product team, who confirmed the failure. (AllowMe was acquired by Serasa Experian.)'},
+          {date:'MAY 2019 / JUL 2021', company:'Nubank', role:'Fraud Analyst II, I and Customer Excellence', line:'Financial fraud operations at scale, with KYC, document fraud, and transaction monitoring. This is where I understood how fraud operations really work from the inside.'},
+          {date:'2017 / 2019', company:'GF Casa Decor', role:'Sales and customer service', line:'First professional experience, in sales and client relationships, before the turn toward technology and fraud.'},
+        ],
+        skillsLabel:'Skills',
+        competencias:['End to end solution implementation','REST API and SDK integration','Troubleshooting and bug investigation','Onboarding flow definition','Stakeholder management','International communication in English','Technical documentation and training','SQL, Python, React and Node.js','Generative AI and coding agents'],
+        produtosLabel:'Products I work with',
+        produtos:'KYC, Facial Biometrics, Liveness, FaceMatch, Device Intelligence, Document Forensics, OCR, Background Check, Fraud Score, LVS,',
+        produtosTail:'among others.',
+        contactLabel:'Contact',
+        contactLine:'Open to conversations with B2B technology teams.',
+        email:'eric.cirillo@email.com', location:'São Paulo, fluent English',
+        downloadsLabel:'Downloads', dl1:'Résumé', dl2:'Career Bible',
+        footerLeft:'Eric Cirillo, São Paulo', footerRight:'A document, not a showcase. 2026',
+      },
+    };
+
+    const P = PACK[this.state.lang] || PACK.pt;
+
+    return {
+      ...P,
+      rootStyle,
+      ptBtnStyle: langBtn(this.state.lang === 'pt'),
+      enBtnStyle: langBtn(this.state.lang === 'en'),
+      setPt: () => this.setState({ lang: 'pt' }),
+      setEn: () => this.setState({ lang: 'en' }),
+      toggleTheme: () => this.setState(s => ({ theme: s.theme === 'light' ? 'dark' : 'light' })),
+    };
+  }
+}
+</script>
+</body>
+</html>

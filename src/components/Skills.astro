@@ -1,0 +1,58 @@
+---
+import type { Content } from "../i18n";
+
+interface Props {
+  t: Content;
+}
+
+const { t } = Astro.props;
+const s = t.skills;
+---
+
+<section class="section">
+  <div class="container section-pad" style="position:relative;">
+    <span class="ghost-num" aria-hidden="true">04</span>
+    <div
+      class="two-col"
+      style="position:relative; z-index:1; display:grid; grid-template-columns:minmax(0,200px) minmax(0,1fr); gap:clamp(30px,6vw,80px); align-items:start;"
+    >
+      <div
+        style="font-family:var(--font-mono); font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-2);"
+      >
+        {s.label}
+      </div>
+      <div>
+        <div
+          style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:0 30px;"
+        >
+          {
+            s.items.map((c) => (
+              <div style="display:flex; gap:11px; align-items:baseline; border-top:1px solid var(--rule); padding:13px 0;">
+                <span
+                  style="width:4px; height:4px; background:var(--accent); flex:none; margin-top:7px;"
+                  aria-hidden="true"
+                />
+                <span style="font-size:15px; color:var(--text); line-height:1.4;">
+                  {c}
+                </span>
+              </div>
+            ))
+          }
+        </div>
+        <div style="margin-top:48px;">
+          <div
+            style="font-family:var(--font-mono); font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--text-2);"
+          >
+            {s.productsLabel}
+          </div>
+          <p
+            style="font-family:var(--font-display); font-weight:500; font-size:clamp(18px,1.8vw,23px); line-height:1.5; letter-spacing:-0.01em; color:var(--text-2); max-width:72ch; margin:14px 0 0;"
+          >
+            <span style="color:var(--text);">{s.products}</span>
+            {s.productsTail}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,68 @@
+---
+import type { Content } from "../i18n";
+
+interface Props {
+  t: Content;
+  storyHref?: string;
+}
+
+const { t, storyHref } = Astro.props;
+const a = t.about;
+---
+
+<section id="sobre" class="section">
+  <div class="container section-pad" style="position:relative;">
+    <span class="ghost-num" aria-hidden="true">01</span>
+    <div
+      class="about-grid two-col"
+      style="position:relative; z-index:1; display:grid; grid-template-columns:minmax(0,300px) minmax(0,1fr); gap:clamp(36px,6vw,80px); align-items:start;"
+    >
+      <div>
+        <div
+          class="about-portrait"
+          style="position:relative; width:100%; aspect-ratio:1/1; border-radius:50%; padding:7px; background:var(--panel); border:1px solid var(--rule-strong); box-shadow:var(--shadow);"
+        >
+          <img
+            src="/eric.png"
+            alt={a.photoAlt}
+            width="782"
+            height="791"
+            loading="eager"
+            style="width:100%; height:100%; object-fit:cover; object-position:50% 30%; border-radius:50%;"
+          />
+        </div>
+        <div
+          style="font-family:var(--font-mono); font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-2); margin-top:18px;"
+        >
+          {a.label}
+        </div>
+      </div>
+
+      <div style="max-width:62ch; padding-top:6px;">
+        <p
+          style="font-family:var(--font-display); font-weight:500; font-size:clamp(20px,2vw,27px); line-height:1.45; letter-spacing:-0.01em; color:var(--text); margin:0;"
+        >
+          {a.p1}
+        </p>
+        <p style="font-size:17px; line-height:1.65; color:var(--text-2); margin:26px 0 0;">
+          {a.p2}
+        </p>
+        <p style="font-size:17px; line-height:1.65; color:var(--text-2); margin:20px 0 0;">
+          {a.p3}
+        </p>
+        {
+          storyHref && (
+            <a
+              href={storyHref}
+              class="cta-primary lk"
+              style="font-family:var(--font-mono); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--text); border:1px solid var(--rule-strong); padding:14px 22px; display:inline-flex; align-items:center; gap:10px; margin-top:32px;"
+            >
+              {a.storyCta}
+              <span aria-hidden="true">&rarr;</span>
+            </a>
+          )
+        }
+      </div>
+    </div>
+  </div>
+</section>

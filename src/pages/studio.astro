@@ -1,0 +1,239 @@
+---
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { getContent } from "../i18n";
+
+const locale = "pt" as const;
+const t = getContent(locale);
+const meta = {
+  ...t,
+  meta: {
+    ...t.meta,
+    title: "Serasa Studio Identity & Fraud, case",
+    description:
+      "Como concebi e construí o Serasa Studio ID&F: quatro ferramentas internas para testar, demonstrar e documentar os produtos antifraude da Serasa, com chamadas reais de API.",
+  },
+};
+
+const mono =
+  "font-family:var(--font-mono); font-size:11px; letter-spacing:0.18em; text-transform:uppercase;";
+
+const tools = [
+  {
+    n: "01",
+    name: "Product Lab",
+    desc: "Um Postman pensado para os produtos Serasa. Seleciona o produto, preenche só os campos relevantes e retorna o resultado de forma legível. Chamadas reais (autenticação, transação, polling), em Homologação ou Produção.",
+    img: "/studio/flow-builder.png",
+    caption: "Flow Builder, com painel de produtos, sequência e fluxograma gerado automaticamente.",
+  },
+  {
+    n: "02",
+    name: "Onboarding Builder (Web)",
+    desc: "Monta a jornada de verificação arrastando produtos numa sequência, roda com um CPF real e gera um relatório em PDF ao final. Seletor de ambiente integrado: Demo, Homologação ou Produção.",
+    img: "/studio/onboarding-web.png",
+    caption: "Onboarding Builder Web com seletor de ambiente e aviso de modo Produção ativo.",
+  },
+  {
+    n: "03",
+    name: "Onboarding Builder (Mobile)",
+    desc: "A mesma jornada rodando dentro de uma moldura de celular, igual a um app nativo, sem precisar distribuir APK. Útil para demonstrações ao vivo com clientes.",
+    img: "/studio/onboarding-mobile.png",
+    caption: "Modo Aplicativo: o onboarding completo rodando como app nativo na web.",
+  },
+  {
+    n: "04",
+    name: "Flow Builder",
+    desc: "Editor visual de fluxogramas de onboarding antifraude. Monta as etapas do fluxo com ramificações de decisão (sim/não) e exporta em PDF ou PNG para apresentações e documentação.",
+    img: "/studio/flow-builder-2.png",
+    caption: "Flow Builder com fluxo de onboarding montado: Liveness, Biometria, Captura e Verificação de Documentos.",
+  },
+];
+
+const metrics = [
+  { v: "4", l: "Ferramentas" },
+  { v: "11", l: "Produtos integrados" },
+  { v: "~24k", l: "Linhas de código" },
+  { v: "~45", l: "Componentes React" },
+  { v: "3 sem.", l: "Tempo de entrega" },
+  { v: "3", l: "Ambientes" },
+];
+
+const stack = [
+  "React", "Vite", "React Router", "Node.js", "Express",
+  "undici", "@dnd-kit", "jsPDF", "html2canvas",
+  "Monorepo (npm workspaces)", "SDKs web", "APIs REST", "Claude Code",
+];
+---
+
+<Base locale={locale} t={meta} ogSlug="og-studio">
+  <Header locale={locale} t={t} langs={{ pt: "/studio", en: "/en/studio" }} />
+
+  <main id="main" class="container" style="padding-top:48px; padding-bottom:clamp(80px,10vw,130px);">
+
+    <!-- Voltar -->
+    <a
+      href="/"
+      class="mono-link lk"
+      style={`${mono} color:var(--text-2); display:inline-flex; align-items:center; gap:8px;`}
+    >
+      <span aria-hidden="true">&larr;</span>Voltar
+    </a>
+
+    <!-- Hero -->
+    <header style="margin-top:40px; max-width:800px;">
+      <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+        <span style="display:flex; align-items:center; gap:10px;">
+          <span style="width:6px; height:6px; border-radius:50%; background:var(--accent); display:inline-block;" aria-hidden="true"></span>
+          <span style={`${mono} color:var(--text-2);`}>Case</span>
+        </span>
+        <span style={`${mono} color:var(--rule-strong);`}>/</span>
+        <span style={`${mono} color:var(--meta);`}>Antifraude & IA</span>
+      </div>
+
+      <h1
+        style="font-family:var(--font-display); font-weight:600; font-size:clamp(38px,5.5vw,72px); line-height:1; letter-spacing:-0.03em; margin:20px 0 0; color:var(--text);"
+      >
+        Serasa Studio<br />Identity & Fraud
+      </h1>
+
+      <p
+        style="font-family:var(--font-display); font-weight:500; font-size:clamp(18px,2vw,24px); line-height:1.35; color:var(--text-2); margin:20px 0 0; max-width:52ch;"
+      >
+        Quatro ferramentas que o time de Professional Services usa para testar, demonstrar e documentar os produtos antifraude da Serasa, com chamadas reais de API.
+      </p>
+
+      <!-- Chips -->
+      <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:28px;">
+        {["4 ferramentas", "11 produtos integrados", "~24k linhas de código", "Demo / Homologação / Produção"].map((chip) => (
+          <span style={`${mono} color:var(--text-2); border:1px solid var(--rule-strong); padding:6px 12px; font-size:10px;`}>
+            {chip}
+          </span>
+        ))}
+      </div>
+    </header>
+
+    <!-- Contexto -->
+    <section style="margin-top:clamp(56px,8vw,96px); max-width:720px; border-top:1px solid var(--rule); padding-top:32px;">
+      <div style={`${mono} color:var(--text-2); margin-bottom:18px;`}>O problema</div>
+      <p style="font-size:17px; line-height:1.7; color:var(--text-2); margin:0; max-width:66ch;">
+        No dia a dia do Professional Services, testar um produto antifraude, montar uma demonstração para cliente ou depurar uma integração dependia de scripts soltos, documentação espalhada e de quem sabia mexer no Postman. Não existia um ambiente centralizado.
+      </p>
+      <p style="font-size:17px; line-height:1.7; color:var(--text-2); margin:20px 0 0; max-width:66ch;">
+        Decidi construir a ferramenta que faltava. Conhecia o domínio por dentro: sabia quais produtos existiam, como cada chamada funcionava, o que o time precisava para uma demo e onde o troubleshooting costumava travar. Usei IA para transformar esse entendimento em código.
+      </p>
+    </section>
+
+    <!-- As quatro ferramentas -->
+    <section style="margin-top:clamp(56px,8vw,96px);">
+      <div style="border-top:1px solid var(--rule); padding-top:32px; margin-bottom:clamp(40px,6vw,64px);">
+        <div style={`${mono} color:var(--text-2);`}>As ferramentas</div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:clamp(64px,10vw,100px);">
+        {tools.map((tool) => (
+          <div class="tool-block">
+            <div style="display:flex; align-items:baseline; gap:14px; margin-bottom:16px;">
+              <span style={`font-family:var(--font-display); font-weight:600; font-size:15px; color:var(--accent);`}>{tool.n}</span>
+              <h2 style="font-family:var(--font-display); font-weight:600; font-size:clamp(22px,2.6vw,32px); letter-spacing:-0.02em; margin:0; color:var(--text);">
+                {tool.name}
+              </h2>
+            </div>
+            <p style="font-size:16.5px; line-height:1.7; color:var(--text-2); max-width:66ch; margin:0 0 28px;">
+              {tool.desc}
+            </p>
+            <div style="background:var(--panel); border:1px solid var(--rule-strong); border-radius:8px; overflow:hidden;">
+              <img
+                src={tool.img}
+                alt={tool.caption}
+                loading="lazy"
+                style="width:100%; display:block;"
+              />
+            </div>
+            <p style={`${mono} color:var(--meta); font-size:10px; margin-top:10px;`}>{tool.caption}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Por dentro -->
+    <section style="margin-top:clamp(64px,10vw,100px); border-top:1px solid var(--rule); padding-top:32px; max-width:720px;">
+      <div style={`${mono} color:var(--text-2); margin-bottom:18px;`}>Por dentro</div>
+      <ul style="margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:14px;">
+        {[
+          "11 produtos antifraude integrados de ponta a ponta: Liveness, Biometria Facial, FaceMatch, Device Intelligence, Documentoscopia, Captura de Documentos, OCR, Background Check, Score Antifraude, Score Laranja e Link de Validação Segura.",
+          "Captura biométrica real no navegador via SDK web, incluindo prova de vida embarcada em iframe (resolveu uma limitação de contexto do SDK que impedia o modo embarcado).",
+          "Motor data-driven: cada produto descreve sua própria autenticação e sequência de chamadas. Adicionar um produto novo exige pouco código e não quebra o que já existe.",
+          "Encadeamento assíncrono automático (autenticação, transação, polling), upload multipart, geração de PDF e três ambientes: Demo, Homologação e Produção.",
+        ].map((item) => (
+          <li style="display:flex; gap:14px; align-items:baseline;">
+            <span style="font-family:var(--font-mono); font-size:10px; color:var(--accent); flex-shrink:0;">—</span>
+            <span style="font-size:16px; line-height:1.65; color:var(--text-2);">{item}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- Números -->
+    <section style="margin-top:clamp(56px,8vw,96px);">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); border-top:1px solid var(--rule);">
+        {metrics.map((m) => (
+          <div style="padding:32px 20px 32px 24px; border-left:1px solid var(--rule);">
+            <div style="font-family:var(--font-display); font-weight:600; font-size:clamp(26px,3vw,40px); line-height:1; letter-spacing:-0.02em; color:var(--text);">
+              {m.v}
+            </div>
+            <div style={`${mono} font-size:10px; color:var(--text-2); margin-top:10px;`}>{m.l}</div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Stack -->
+    <section style="margin-top:clamp(48px,7vw,80px); border-top:1px solid var(--rule); padding-top:32px; max-width:720px;">
+      <div style={`${mono} color:var(--text-2); margin-bottom:18px;`}>Stack</div>
+      <div style="display:flex; flex-wrap:wrap; gap:10px;">
+        {stack.map((s) => (
+          <span style={`${mono} color:var(--text-2); border:1px solid var(--rule); padding:6px 12px; font-size:10px;`}>
+            {s}
+          </span>
+        ))}
+      </div>
+    </section>
+
+    <!-- Reconhecimento -->
+    <section style="margin-top:clamp(48px,7vw,80px); max-width:720px;">
+      <div style="display:flex; gap:18px; align-items:stretch;">
+        <span style="width:2px; background:var(--accent); flex:none;" aria-hidden="true"></span>
+        <p style="font-size:16px; line-height:1.6; color:var(--text-2); margin:0;">
+          Reconhecido pela diretoria no comitê interno de IA e aprovado para publicação corporativa.
+        </p>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="margin-top:clamp(56px,8vw,96px); border-top:1px solid var(--rule); padding-top:40px;">
+      <div style="display:flex; flex-wrap:wrap; gap:14px;">
+        <a
+          href="https://www.linkedin.com/in/ericirillo/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="cta-primary lk"
+          style={`${mono} color:var(--text); border:1px solid var(--rule-strong); padding:15px 24px;`}
+        >
+          LinkedIn
+        </a>
+        <a
+          href="/docs/Eric_Cirillo_CV_2026.pdf"
+          download
+          class="cta-secondary lk"
+          style={`${mono} color:var(--text-2); border:1px solid var(--rule); padding:15px 24px;`}
+        >
+          Baixar currículo
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer t={t} />
+</Base>

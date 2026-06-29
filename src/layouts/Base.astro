@@ -1,0 +1,106 @@
+---
+import "../styles/global.css";
+import type { Content, Locale } from "../i18n";
+
+interface Props {
+  locale: Locale;
+  t: Content;
+  ogSlug?: string;
+}
+
+const { locale, t, ogSlug } = Astro.props;
+const site = Astro.site?.toString().replace(/\/$/, "") ?? "";
+const ogImage = `${site}/og/${ogSlug ?? `og-${locale}`}.png`;
+const canonical = `${site}${Astro.url.pathname}`;
+---
+
+<!doctype html>
+<html lang={locale === "pt" ? "pt-BR" : "en"}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Tema: aplica antes do paint para evitar flash -->
+    <script is:inline>
+      (function () {
+        try {
+          var stored = localStorage.getItem("theme");
+          var theme =
+            stored ||
+            (window.matchMedia("(prefers-color-scheme: light)").matches
+              ? "light"
+              : "dark");
+          document.documentElement.dataset.theme = theme;
+        } catch (e) {
+          document.documentElement.dataset.theme = "dark";
+        }
+      })();
+    </script>
+
+    <title>{t.meta.title}</title>
+    <meta name="description" content={t.meta.description} />
+    <meta name="author" content="Eric Cirillo" />
+    <link rel="canonical" href={canonical} />
+
+    <link rel="alternate" hreflang="pt-BR" href={`${site}/`} />
+    <link rel="alternate" hreflang="en" href={`${site}/en/`} />
+    <link rel="alternate" hreflang="x-default" href={`${site}/`} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content={locale === "pt" ? "pt_BR" : "en_US"} />
+    <meta property="og:title" content={t.meta.title} />
+    <meta property="og:description" content={t.meta.description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content={t.meta.ogAlt} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={t.meta.title} />
+    <meta name="twitter:description" content={t.meta.description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <meta name="theme-color" content="#0b0b0c" />
+  </head>
+  <body>
+    <a
+      href="#main"
+      class="lk"
+      style="position:absolute; left:-9999px; top:0; z-index:60; background:var(--surface); color:var(--text); padding:10px 16px; font-family:var(--font-mono); font-size:12px;"
+      onfocus="this.style.left='16px'; this.style.top='16px';"
+      onblur="this.style.left='-9999px';"
+    >
+      {locale === "pt" ? "Pular para o conteúdo" : "Skip to content"}
+    </a>
+
+    <slot />
+
+    <script is:inline>
+      (function () {
+        var btn = document.querySelector("[data-theme-toggle]");
+        if (!btn) return;
+        var labelEl = btn.querySelector("[data-theme-label]");
+        function syncLabel() {
+          if (!labelEl) return;
+          var dark = document.documentElement.dataset.theme !== "light";
+          labelEl.textContent = dark
+            ? labelEl.dataset.toLight
+            : labelEl.dataset.toDark;
+        }
+        syncLabel();
+        btn.addEventListener("click", function () {
+          var next =
+            document.documentElement.dataset.theme === "light"
+              ? "dark"
+              : "light";
+          document.documentElement.dataset.theme = next;
+          try {
+            localStorage.setItem("theme", next);
+          } catch (e) {}
+          syncLabel();
+        });
+      })();
+    </script>
+  </body>
+</html>

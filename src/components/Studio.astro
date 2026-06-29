@@ -1,0 +1,116 @@
+---
+import type { Content } from "../i18n";
+
+interface Props {
+  t: Content;
+  caseHref?: string;
+}
+
+const { t, caseHref } = Astro.props;
+const s = t.studio;
+const mono = "font-family:var(--font-mono);";
+---
+
+<section id="studio" class="section">
+  <div class="container section-pad" style="position:relative;">
+    <span class="ghost-num" aria-hidden="true">02</span>
+    <div style="position:relative; z-index:1;">
+      <div
+        style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; align-items:baseline;"
+      >
+        <div style="display:flex; align-items:center; gap:14px;">
+          <span
+            style={`${mono} font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--accent);`}
+            >{s.label}</span
+          >
+          <span
+            style={`${mono} font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--meta); border:1px solid var(--rule-strong); padding:4px 9px;`}
+            >{s.tag}</span
+          >
+        </div>
+        <span
+          style={`${mono} font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--meta);`}
+          >{s.stack}</span
+        >
+      </div>
+
+      <h2
+        style="font-family:var(--font-display); font-weight:600; font-size:clamp(40px,6vw,84px); letter-spacing:-0.035em; line-height:0.95; margin:22px 0 0; color:var(--text);"
+      >
+        {s.title}
+      </h2>
+      <p
+        style="font-family:var(--font-display); font-weight:500; font-size:clamp(19px,2vw,26px); line-height:1.3; color:var(--text-2); margin:16px 0 0; max-width:32ch;"
+      >
+        {s.kicker}
+      </p>
+      <p
+        style="font-size:17px; line-height:1.65; color:var(--text-2); max-width:66ch; margin:30px 0 0;"
+      >
+        {s.intro}
+      </p>
+
+      <div
+        style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:18px; margin-top:48px;"
+      >
+        {
+          s.modules.map((m) => (
+            <div
+              class="module lk"
+              style="background:var(--panel); border:1px solid var(--rule); border-radius:14px; box-shadow:var(--shadow); padding:22px 22px 26px;"
+            >
+              <span style={`${mono} font-size:11px; letter-spacing:0.16em; color:var(--accent);`}>
+                {m.n}
+              </span>
+              <h3 style="font-family:var(--font-display); font-weight:600; font-size:clamp(20px,2vw,24px); letter-spacing:-0.01em; color:var(--text); margin:14px 0 0;">
+                {m.t}
+              </h3>
+              <p style="font-size:15.5px; line-height:1.55; color:var(--text-2); margin:10px 0 0; max-width:38ch;">
+                {m.d}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+
+      <div
+        style="display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); border-top:1px solid var(--rule); margin-top:20px;"
+      >
+        {
+          s.metrics.map((x) => (
+            <div style="padding:34px 20px 34px 26px; border-left:1px solid var(--rule);">
+              <div style="font-family:var(--font-display); font-weight:600; font-size:clamp(28px,3vw,40px); line-height:1; letter-spacing:-0.02em; color:var(--text);">
+                {x.v}
+              </div>
+              <div style={`${mono} font-size:10.5px; letter-spacing:0.13em; text-transform:uppercase; color:var(--text-2); margin-top:11px;`}>
+                {x.l}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <div
+        style="display:flex; gap:18px; align-items:stretch; margin-top:48px; max-width:62ch;"
+      >
+        <span style="width:2px; background:var(--accent); flex:none;" aria-hidden="true"></span>
+        <p style="font-size:16px; line-height:1.6; color:var(--text-2); margin:0;">
+          {s.recognition}
+        </p>
+      </div>
+
+      {caseHref && (
+        <div style="margin-top:36px;">
+          <a
+            href={caseHref}
+            class="cta-primary lk"
+            style={`${mono} font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--text); border:1px solid var(--rule-strong); padding:14px 22px; display:inline-flex; align-items:center; gap:10px;`}
+          >
+            Ver case completo
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+      )}
+    </div>
+  </div>
+</section>

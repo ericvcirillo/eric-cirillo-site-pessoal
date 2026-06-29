@@ -1,0 +1,21 @@
+---
+import type { Content } from "../i18n";
+
+interface Props {
+  t: Content;
+}
+
+const { t } = Astro.props;
+const mono =
+  "font-family:var(--font-mono); font-size:11px; letter-spacing:0.14em; text-transform:uppercase;";
+---
+
+<footer style="border-top:1px solid var(--rule);">
+  <div
+    class="container"
+    style="padding-top:30px; padding-bottom:30px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:14px;"
+  >
+    <span style={`${mono} color:var(--text-2);`}>{t.footer.left}</span>
+    <span style={`${mono} color:var(--meta);`}>{t.footer.right}</span>
+  </div>
+</footer>

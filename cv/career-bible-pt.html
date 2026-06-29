@@ -1,0 +1,711 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <title>Eric Cirillo, Career Bible</title>
+    <style>
+      @page {
+        size: A4;
+        margin: 18mm 17mm;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        color: #1a1a1a;
+        font-size: 10pt;
+        line-height: 1.5;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .page {
+        position: relative;
+        min-height: 261mm;
+        page-break-after: always;
+      }
+      .page:last-child {
+        page-break-after: auto;
+      }
+      .gray {
+        color: #6b6b6b;
+      }
+      .light {
+        color: #9a9a9a;
+      }
+
+      /* Eyebrow "P A R T E 01" */
+      .eyebrow {
+        font-size: 8pt;
+        font-weight: 600;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: #9a9a9a;
+      }
+      .label {
+        font-size: 8pt;
+        font-weight: 600;
+        letter-spacing: 0.26em;
+        text-transform: uppercase;
+        color: #9a9a9a;
+        margin: 22px 0 9px;
+      }
+      h1.part {
+        font-size: 30pt;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        line-height: 1.02;
+        color: #0a0a0a;
+        margin-top: 8px;
+      }
+      .subtitle {
+        font-size: 11pt;
+        color: #8a8a8a;
+        margin-top: 4px;
+      }
+      .ghost {
+        position: absolute;
+        top: -10mm;
+        right: 0;
+        font-size: 150pt;
+        font-weight: 800;
+        line-height: 1;
+        color: #f0f0f0;
+        z-index: -1;
+        letter-spacing: -0.03em;
+      }
+      hr.thin {
+        border: none;
+        border-top: 1px solid #e6e6e6;
+        margin: 16px 0;
+      }
+
+      p.body {
+        margin-bottom: 9px;
+        text-align: justify;
+        color: #2a2a2a;
+      }
+      .quote {
+        font-style: italic;
+        color: #555;
+        border-top: 1px solid #e6e6e6;
+        border-bottom: 1px solid #e6e6e6;
+        padding: 14px 0;
+        margin: 16px 0;
+      }
+      strong {
+        color: #0a0a0a;
+      }
+
+      ul {
+        list-style: none;
+        margin: 6px 0;
+      }
+      ul li {
+        position: relative;
+        padding-left: 16px;
+        margin-bottom: 6px;
+        color: #2a2a2a;
+      }
+      ul li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.55em;
+        width: 4px;
+        height: 4px;
+        background: #b5b5b5;
+      }
+
+      /* Tabela label / valor */
+      .tbl .line {
+        display: flex;
+        gap: 20px;
+        padding: 9px 0;
+        border-top: 1px solid #eee;
+      }
+      .tbl .k {
+        flex: 0 0 165px;
+        font-size: 7.5pt;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #9a9a9a;
+        padding-top: 2px;
+      }
+      .tbl .v {
+        flex: 1;
+        color: #333;
+      }
+
+      /* Capa */
+      .cover-name {
+        font-size: 46pt;
+        font-weight: 800;
+        letter-spacing: -0.025em;
+        line-height: 1;
+        color: #0a0a0a;
+      }
+      .cover-role {
+        font-size: 9.5pt;
+        letter-spacing: 0.02em;
+        color: #555;
+        margin-top: 10px;
+      }
+      .cover-rule {
+        border: none;
+        border-top: 1px solid #111;
+        margin: 16px 0 28px;
+      }
+      .cover-stats {
+        display: flex;
+        gap: 0;
+        border: 1px solid #e6e6e6;
+        margin: 22px 0;
+      }
+      .cover-stats .cell {
+        flex: 1;
+        padding: 18px 14px;
+        text-align: center;
+        border-left: 1px solid #e6e6e6;
+      }
+      .cover-stats .cell:first-child {
+        border-left: none;
+      }
+      .cover-stats .num {
+        font-size: 22pt;
+        font-weight: 800;
+        color: #0a0a0a;
+        letter-spacing: -0.02em;
+      }
+      .cover-stats .cap {
+        font-size: 7.5pt;
+        color: #8a8a8a;
+        margin-top: 6px;
+      }
+      .toc .row {
+        display: flex;
+        gap: 12px;
+        align-items: baseline;
+        padding: 9px 0;
+        border-top: 1px solid #eee;
+      }
+      .toc .n {
+        font-weight: 800;
+        color: #0a0a0a;
+        flex: 0 0 26px;
+      }
+      .toc .t {
+        font-weight: 700;
+        color: #0a0a0a;
+      }
+      .toc .d {
+        color: #9a9a9a;
+      }
+      .cover-foot {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        font-size: 8pt;
+        letter-spacing: 0.1em;
+        color: #b0b0b0;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- CAPA -->
+    <section class="page">
+      <div class="cover-name">Eric Cirillo</div>
+      <div class="cover-role">
+        IMPLEMENTATION SPECIALIST &middot; IDENTITY &amp; FRAUD &middot;
+        PROFESSIONAL SERVICES
+      </div>
+      <hr class="cover-rule" />
+
+      <div style="font-size: 15pt; font-weight: 700; color: #0a0a0a">
+        Career Bible
+      </div>
+      <p class="gray" style="margin-top: 6px">
+        Documento de referência para posicionamento profissional, currículo e
+        presença digital.
+      </p>
+
+      <div class="cover-stats">
+        <div class="cell">
+          <div class="num">6+</div>
+          <div class="cap">anos de experiência</div>
+        </div>
+        <div class="cell">
+          <div class="num">100+</div>
+          <div class="cap">clientes atendidos</div>
+        </div>
+        <div class="cell">
+          <div class="num">50+</div>
+          <div class="cap">implantações</div>
+        </div>
+        <div class="cell">
+          <div class="num">11</div>
+          <div class="cap">produtos dominados</div>
+        </div>
+        <div class="cell">
+          <div class="num">20</div>
+          <div class="cap">projetos simultâneos</div>
+        </div>
+      </div>
+
+      <div class="label">Conteúdo</div>
+      <div class="toc">
+        <div class="row">
+          <span class="n">01</span><span class="t">Identidade Profissional</span>
+          <span class="d">Perfil, filosofia e competências centrais</span>
+        </div>
+        <div class="row">
+          <span class="n">02</span><span class="t">Trajetória</span>
+          <span class="d">GF Casa Decor, Nubank, AllowMe, Serasa Experian</span>
+        </div>
+        <div class="row">
+          <span class="n">03</span><span class="t">Serasa Studio</span>
+          <span class="d">O projeto mais significativo da carreira</span>
+        </div>
+        <div class="row">
+          <span class="n">04</span><span class="t">Forma de Trabalhar</span>
+          <span class="d">Como pensa, decide e entrega</span>
+        </div>
+        <div class="row">
+          <span class="n">05</span><span class="t">Banco de Dados</span>
+          <span class="d">Métricas, produtos, competências e keywords ATS</span>
+        </div>
+        <div class="row">
+          <span class="n">06</span><span class="t">Objetivos</span>
+          <span class="d">Posicionamento e posições de interesse</span>
+        </div>
+      </div>
+
+      <div class="cover-foot">São Paulo, Brasil &middot; 2026 &middot; Confidencial</div>
+    </section>
+
+    <!-- PARTE 01 -->
+    <section class="page">
+      <span class="ghost">01</span>
+      <div class="eyebrow">Parte 01</div>
+      <h1 class="part">Identidade Profissional</h1>
+      <div class="subtitle">Perfil, filosofia e competências centrais</div>
+      <hr class="thin" />
+
+      <p class="body">
+        Eric Cirillo é especialista em Professional Services e implantação de
+        soluções de Identity &amp; Fraud. Sua carreira foi construída na
+        interseção entre tecnologia, clientes e negócio, com atuação em projetos
+        enterprise que exigem conhecimento técnico profundo e comunicação clara
+        com diferentes perfis de stakeholders.
+      </p>
+      <p class="body">
+        Ao longo da trajetória, desenvolveu um perfil híbrido: entende o problema
+        operacional do cliente, domina os produtos antifraude, dialoga com
+        engenharia e consegue traduzir tudo isso em linguagem de negócio. Esse
+        posicionamento faz com que seja frequentemente acionado para os projetos
+        mais complexos da equipe.
+      </p>
+
+      <p class="quote">
+        "Tecnologia não é o objetivo. É a ferramenta. O diferencial está em usar
+        conhecimento de domínio e IA para transformar problemas reais em soluções
+        funcionais."
+      </p>
+
+      <div class="label">Perfil em quatro pilares</div>
+      <ul>
+        <li>Relacionamento consultivo com clientes enterprise</li>
+        <li>Conhecimento profundo de produtos antifraude (Identity &amp; Fraud)</li>
+        <li>Capacidade técnica para dialogar com engenharia e produto</li>
+        <li>Visão de melhoria contínua e criação de ferramentas internas</li>
+      </ul>
+
+      <div class="label">Competências centrais</div>
+      <div class="tbl">
+        <div class="line">
+          <div class="k">Comunicação</div>
+          <div class="v">
+            Facilidade para explicar assuntos técnicos para públicos não técnicos.
+            Frequentemente escolhido para reuniões com clientes, apresentações
+            executivas e treinamentos. Conduz reuniões em inglês com clientes e
+            equipes internacionais.
+          </div>
+        </div>
+        <div class="line">
+          <div class="k">Organização do conhecimento</div>
+          <div class="v">
+            Estrutura processos, cria documentações, materiais de treinamento e
+            bases de conhecimento. Reduz a curva de aprendizado das equipes e
+            diminui a dependência de conhecimento individual.
+          </div>
+        </div>
+        <div class="line">
+          <div class="k">Resolução de problemas</div>
+          <div class="v">
+            Atua nos projetos considerados mais difíceis: entende rapidamente o
+            cenário, conversa com as áreas envolvidas, organiza as informações e
+            conduz o projeto até a produção.
+          </div>
+        </div>
+        <div class="line">
+          <div class="k">Visão de produto</div>
+          <div class="v">
+            Identifica oportunidades de melhoria além das demandas operacionais.
+            Diversas iniciativas surgiram dessa postura, incluindo a criação do
+            Serasa Studio.
+          </div>
+        </div>
+        <div class="line">
+          <div class="k">IA aplicada</div>
+          <div class="v">
+            Utiliza agentes de IA como aceleradores de implementação. Define
+            arquitetura funcional, modela o domínio, especifica a experiência do
+            usuário e valida tecnicamente. A IA executa. O conhecimento de domínio
+            é dele.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARTE 02 -->
+    <section class="page">
+      <span class="ghost">02</span>
+      <div class="eyebrow">Parte 02</div>
+      <h1 class="part">Trajetória Profissional</h1>
+      <div class="subtitle">Da operação antifraude ao Professional Services</div>
+      <hr class="thin" />
+
+      <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 6px">
+        <strong style="font-size: 11pt">GF Casa Decor</strong>
+        <span class="light" style="font-size: 9pt">Fev/2018 - Mar/2019</span>
+      </div>
+      <div class="gray" style="font-size: 9pt; margin: 1px 0 6px">Assistente Comercial</div>
+      <p class="body">
+        Primeira experiência profissional relevante. Desenvolveu habilidades de
+        atendimento ao cliente, negociação, comunicação e resolução de conflitos,
+        competências que mais tarde se tornaram tão importantes quanto o
+        conhecimento técnico em implantações enterprise.
+      </p>
+
+      <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 16px">
+        <strong style="font-size: 11pt">Nubank</strong>
+        <span class="light" style="font-size: 9pt">Mai/2019 - Jul/2021</span>
+      </div>
+      <div class="gray" style="font-size: 9pt; margin: 1px 0 6px">Fraud Analyst I, Fraud Analyst II</div>
+      <p class="body">
+        Entrada no mercado de tecnologia e construção da base técnica em prevenção
+        à fraude. Atuou em operações de investigação de fraudes, análise
+        documental, monitoramento transacional e melhoria contínua de processos.
+        Desenvolveu SQL, dashboards e indicadores. Participou de iniciativas com
+        biometria facial e modelos preditivos.
+      </p>
+      <ul>
+        <li>Investigação de fraudes e KYC</li>
+        <li>Monitoramento transacional e compliance</li>
+        <li>SQL e dashboards de indicadores</li>
+        <li>Operações em larga escala</li>
+      </ul>
+
+      <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 16px">
+        <strong style="font-size: 11pt">AllowMe <span class="light" style="font-weight: 400">(adquirida pela Serasa Experian)</span></strong>
+        <span class="light" style="font-size: 9pt">Out/2022 - Abr/2024</span>
+      </div>
+      <div class="gray" style="font-size: 9pt; margin: 1px 0 6px">Fraud Analyst II, Professional Services</div>
+      <p class="body">
+        Transição definitiva para Professional Services. Passou a implantar
+        soluções de Identity &amp; Fraud para clientes enterprise, trabalhando com
+        APIs REST, SDKs, ambientes de homologação e produção. Aprendeu o ciclo
+        completo de uma implantação, do handoff comercial até a entrada em
+        produção.
+      </p>
+      <ul>
+        <li>Integração de APIs REST e SDKs</li>
+        <li>Kickoffs técnicos e reuniões com clientes</li>
+        <li>Troubleshooting e investigação de bugs</li>
+        <li>Definição de fluxos de onboarding</li>
+      </ul>
+
+      <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 16px">
+        <strong style="font-size: 11pt">Serasa Experian</strong>
+        <span class="light" style="font-size: 9pt">Jul/2024 - Presente</span>
+      </div>
+      <div class="gray" style="font-size: 9pt; margin: 1px 0 6px">Fraud Analyst III, Professional Services, Anti-Fraud Solutions</div>
+      <p class="body">
+        Com a aquisição da AllowMe pela Serasa Experian, passou a atuar em um
+        portfólio maior, com clientes de maior porte. Tornou-se referência técnica
+        da equipe para projetos complexos e clientes estratégicos. Nesse período
+        também criou o Serasa Studio Identity &amp; Fraud.
+      </p>
+      <ul>
+        <li>Referência técnica em Identity &amp; Fraud</li>
+        <li>Projetos enterprise e clientes estratégicos</li>
+        <li>Comunicação internacional em inglês (EUA, Índia, China)</li>
+        <li>Desenvolvimento do Serasa Studio</li>
+      </ul>
+    </section>
+
+    <!-- PARTE 03 -->
+    <section class="page">
+      <span class="ghost">03</span>
+      <div class="eyebrow">Parte 03</div>
+      <h1 class="part">Serasa Studio Identity &amp; Fraud</h1>
+      <div class="subtitle">O projeto mais significativo da carreira</div>
+      <hr class="thin" />
+
+      <p class="body">
+        O Serasa Studio é uma plataforma interna criada para centralizar
+        conhecimento, padronizar demonstrações, facilitar testes, acelerar
+        troubleshooting e permitir a construção visual de jornadas de onboarding.
+        Não foi uma demanda da liderança. Não estava no roadmap. Nasceu da
+        observação do trabalho diário e da iniciativa de resolver problemas antes
+        que alguém pedisse.
+      </p>
+
+      <div class="label">O contexto</div>
+      <p class="body">
+        Após anos implantando soluções de Identity &amp; Fraud, um padrão ficou
+        evidente: os maiores problemas raramente eram técnicos. Na maioria das
+        vezes eram consequência de conhecimento fragmentado.
+      </p>
+      <ul>
+        <li>Cada produto tinha documentação diferente, cada especialista usava ferramentas diferentes</li>
+        <li>Demonstrações dependiam de Postman ou de quem sabia fazer, sem nenhuma padronização</li>
+        <li>Novos colaboradores levavam meses para se situar no ecossistema de produtos</li>
+        <li>Fluxos de onboarding eram desenhados em ferramentas genéricas que não entendiam o domínio</li>
+        <li>Troubleshooting exigia reprodução manual de integrações inteiras</li>
+      </ul>
+      <p class="quote">
+        A pergunta que surgiu: e se existisse um único ambiente que reunisse tudo,
+        documentação, demonstrações, testes, fluxos e troubleshooting?
+      </p>
+
+      <div class="label">Os quatro módulos</div>
+      <div class="tbl">
+        <div class="line">
+          <div class="k">Product Lab</div>
+          <div class="v">
+            Laboratório para testar produtos de Identity &amp; Fraud sem depender
+            do Postman. O usuário escolhe o produto, preenche os parâmetros e
+            executa. Suporta três modos: Produção, Homologação e Demo. O modo Demo
+            é completamente simulado, útil quando não há credenciais disponíveis.
+            Por trás existe um motor data-driven: adicionar um produto novo exige
+            poucas alterações de código.
+          </div>
+        </div>
+        <div class="line">
+          <div class="k">Onboarding Builder</div>
+          <div class="v">
+            Permite montar visualmente uma jornada de onboarding arrastando
+            produtos e definindo a sequência. O sistema percorre automaticamente
+            toda a jornada e gera um relatório consolidado em PDF. O cliente deixa
+            de imaginar como seria a integração e passa a vivenciá-la.
+          </div>
+        </div>
+        <div class="line">
+          <div class="k">Flow Builder</div>
+          <div class="v">
+            Editor de fluxos criado especificamente para o domínio de Identity
+            &amp; Fraud. Em vez de ferramentas genéricas, o usuário trabalha com
+            elementos que fazem sentido para o contexto: liveness, documentoscopia,
+            biometria, decisões de fraude.
+          </div>
+        </div>
+        <div class="line">
+          <div class="k">Knowledge Hub</div>
+          <div class="v">
+            Base de conhecimento operacional consolidada. Reúne boas práticas e
+            comportamentos específicos dos produtos, informações que normalmente
+            ficam na cabeça dos especialistas. Exemplo: documenta que, durante o
+            Liveness, a segunda das quatro imagens capturadas pelo SDK é a mais
+            adequada para uso posterior em FaceMatch.
+          </div>
+        </div>
+      </div>
+
+      <div class="label">Dimensão e stack</div>
+      <div class="tbl">
+        <div class="line">
+          <div class="k">Linhas de código</div>
+          <div class="v">Aproximadamente 24.000</div>
+        </div>
+        <div class="line">
+          <div class="k">Aplicações</div>
+          <div class="v">4 integradas (monorepo com npm Workspaces)</div>
+        </div>
+        <div class="line">
+          <div class="k">Componentes React</div>
+          <div class="v">Aproximadamente 45</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARTE 04 -->
+    <section class="page">
+      <span class="ghost">04</span>
+      <div class="eyebrow">Parte 04</div>
+      <h1 class="part">Forma de Trabalhar e Diferenciais</h1>
+      <div class="subtitle">Como pensa, decide e entrega</div>
+      <hr class="thin" />
+
+      <div class="label">Perfil de atuação</div>
+      <div class="tbl">
+        <div class="line">
+          <div class="k">O tipo de problema que gosta de resolver</div>
+          <div class="v">
+            Projetos em que ninguém sabe exatamente onde está o problema. Onde
+            existem muitas áreas envolvidas, documentação incompleta e necessidade
+            de organizar e simplificar. Esses cenários geram motivação, não
+            resistência.
+          </div>
+        </div>
+        <div class="line">
+          <div class="k">Relacionamento com clientes</div>
+          <div class="v">
+            O contato com clientes não é apenas para resolver dúvidas técnicas. É
+            para entender como a operação deles funciona, quais são suas
+            preocupações reais e como os produtos podem ser configurados para
+            fazer sentido no contexto deles.
+          </div>
+        </div>
+        <div class="line">
+          <div class="k">Comunicação</div>
+          <div class="v">
+            Adapta a linguagem conforme o público: detalhes técnicos com
+            desenvolvedores, impacto com gestores, exemplos práticos com usuários
+            sem perfil técnico. Conduz reuniões em inglês com equipes nos Estados
+            Unidos, Índia e China.
+          </div>
+        </div>
+        <div class="line">
+          <div class="k">Liderança técnica sem cargo formal</div>
+          <div class="v">
+            Nunca ocupou formalmente um cargo de liderança, mas treinou novos
+            colaboradores, apoiou equipes de Vendas, criou documentação, conduziu
+            apresentações executivas e influenciou decisões de produto.
+          </div>
+        </div>
+        <div class="line">
+          <div class="k">Uso de inteligência artificial</div>
+          <div class="v">
+            O fluxo é sempre o mesmo: identificar o problema, imaginar a solução
+            ideal, definir arquitetura e fluxos, quebrar em módulos e então usar IA
+            para acelerar a implementação. A IA escreve código. Quem define o
+            problema, a experiência e as regras de negócio é o profissional.
+          </div>
+        </div>
+      </div>
+
+      <div class="label">Principais diferenciais</div>
+      <ul>
+        <li>Conhecimento profundo de Identity &amp; Fraud com visão operacional real</li>
+        <li>Capacidade de traduzir tecnologia em linguagem de negócio</li>
+        <li>Facilidade para conectar áreas: produto, engenharia, vendas, suporte e cliente</li>
+        <li>Visão de produto aplicada a ferramentas internas e processos</li>
+        <li>Uso estratégico de IA para construir soluções escaláveis</li>
+        <li>Autonomia e iniciativa: entrega projetos sem precisar de demanda formal</li>
+        <li>Comunicação em inglês em contextos internacionais</li>
+      </ul>
+    </section>
+
+    <!-- PARTE 05 -->
+    <section class="page">
+      <span class="ghost">05</span>
+      <div class="eyebrow">Parte 05</div>
+      <h1 class="part">Banco de Dados da Carreira</h1>
+      <div class="subtitle">Métricas, produtos, competências e keywords ATS</div>
+      <hr class="thin" />
+
+      <div class="label">Métricas</div>
+      <ul>
+        <li>Mais de 6 anos de experiência em tecnologia e antifraude</li>
+        <li>Mais de 100 clientes atendidos em Professional Services</li>
+        <li>Aproximadamente 50 implantações completas conduzidas</li>
+        <li>Mais de 200 integrações de produtos acompanhadas</li>
+        <li>Cerca de 20 projetos simultâneos gerenciados regularmente</li>
+        <li>11 produtos de Identity &amp; Fraud dominados em profundidade</li>
+      </ul>
+
+      <div class="label">Produtos dominados</div>
+      <ul>
+        <li>Liveness e Biometria Facial</li>
+        <li>FaceMatch</li>
+        <li>Device Intelligence</li>
+        <li>Captura de Documentos e OCR</li>
+        <li>Documentoscopia</li>
+        <li>Background Check</li>
+        <li>Fraud Score e Score Laranja</li>
+        <li>Link de Validação Segura (LVS)</li>
+      </ul>
+
+      <div class="label">Competências técnicas</div>
+      <div class="tbl">
+        <div class="line">
+          <div class="k">Foco</div>
+          <div class="v">Professional Services e Implantação de Soluções &middot; Identity &amp; Fraud de ponta a ponta</div>
+        </div>
+        <div class="line">
+          <div class="k">Identity &amp; Fraud</div>
+          <div class="v">KYC &middot; Biometria Facial &middot; Liveness &middot; FaceMatch &middot; Device Intelligence &middot; Documentoscopia &middot; OCR &middot; Background Check &middot; Fraud Score &middot; LVS</div>
+        </div>
+        <div class="line">
+          <div class="k">Integração</div>
+          <div class="v">APIs REST e SDKs &middot; Troubleshooting e investigação de bugs &middot; Definição de fluxos de onboarding</div>
+        </div>
+        <div class="line">
+          <div class="k">Gestão</div>
+          <div class="v">Stakeholder Management &middot; Documentação técnica e treinamentos &middot; Comunicação internacional em inglês</div>
+        </div>
+        <div class="line">
+          <div class="k">Tecnologia</div>
+          <div class="v">SQL &middot; Python &middot; React &middot; JavaScript &middot; Node.js &middot; IA generativa e coding agents (Claude Code, Cursor)</div>
+        </div>
+        <div class="line">
+          <div class="k">Idiomas</div>
+          <div class="v">Português, nativo &middot; Inglês, fluente</div>
+        </div>
+      </div>
+
+      <div class="label">Conquistas relevantes</div>
+      <ul>
+        <li>Desenvolveu o Serasa Studio Identity &amp; Fraud, reconhecido pela diretoria e aprovado para publicação corporativa</li>
+        <li>Identificou e reportou bug crítico no produto FaceMatch logo após o lançamento</li>
+        <li>Tornou-se referência técnica da equipe para projetos complexos e clientes estratégicos</li>
+        <li>Conduziu implantações para clientes de grande porte em múltiplos segmentos</li>
+        <li>Apresentado ao Comitê de IA interno como uma das iniciativas mais relevantes do período</li>
+      </ul>
+    </section>
+
+    <!-- PARTE 06 -->
+    <section class="page">
+      <span class="ghost">06</span>
+      <div class="eyebrow">Parte 06</div>
+      <h1 class="part">Objetivos Profissionais</h1>
+      <div class="subtitle">Posicionamento e posições de interesse</div>
+      <hr class="thin" />
+
+      <p class="body">
+        O objetivo não é simplesmente mudar de cargo. É continuar atuando em
+        posições que combinem tecnologia, clientes, produto, consultoria e uso
+        estratégico de IA. Prefere ambientes onde existe espaço para construir,
+        melhorar processos e desenvolver produtos, não apenas executar demandas.
+      </p>
+
+      <div class="label">Posições de interesse</div>
+      <ul>
+        <li>Implementation Specialist / Technical Implementation Manager</li>
+        <li>Solution Consultant / Technical Consultant</li>
+        <li>Pre-Sales Engineer / Solutions Engineer</li>
+        <li>Product Specialist com foco em Identity &amp; Fraud</li>
+        <li>Technical Account Manager em empresas de tecnologia B2B</li>
+      </ul>
+
+      <p class="quote">
+        Ambientes ideais: empresas de tecnologia B2B com portfólio técnico
+        complexo, onde existe espaço para conectar produto, cliente e engenharia, e
+        onde iniciativas de melhoria são bem-vindas.
+      </p>
+    </section>
+  </body>
+</html>

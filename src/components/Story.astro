@@ -1,0 +1,225 @@
+---
+import type { Locale } from "../i18n";
+import { getStory } from "../i18n/story";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const s = getStory(locale);
+const home = locale === "pt" ? "/" : "/en/";
+const contactHref = `${home}#contato`;
+const mono =
+  "font-family:var(--font-mono); font-size:11px; letter-spacing:0.18em; text-transform:uppercase;";
+---
+
+<!-- Barra de progresso de leitura -->
+<div
+  id="read-progress"
+  style="position:fixed; top:0; left:0; height:2px; width:0; background:var(--accent); z-index:60;"
+  aria-hidden="true"
+>
+</div>
+
+<main id="main" class="container" style="padding-top:48px; padding-bottom:clamp(80px,10vw,130px);">
+  <a
+    href={home}
+    class="mono-link lk"
+    style={`${mono} color:var(--text-2); display:inline-flex; align-items:center; gap:8px;`}
+  >
+    <span aria-hidden="true">&larr;</span>{s.backLabel}
+  </a>
+
+  <header style="margin-top:40px; max-width:720px;">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <span
+        style="width:6px; height:6px; border-radius:50%; background:var(--accent); display:inline-block;"
+        aria-hidden="true"></span>
+      <span style={`${mono} color:var(--text-2);`}>{s.eyebrow}</span>
+    </div>
+    <h1
+      style="font-family:var(--font-display); font-weight:600; font-size:clamp(40px,6vw,76px); line-height:0.98; letter-spacing:-0.035em; margin:22px 0 0; color:var(--text);"
+    >
+      {s.title}
+    </h1>
+    <p style="font-size:clamp(17px,1.6vw,20px); line-height:1.6; color:var(--text-2); margin:24px 0 0;">
+      {s.lead}
+    </p>
+  </header>
+
+  <div
+    class="story-grid"
+    style="display:grid; grid-template-columns:220px minmax(0,1fr); gap:clamp(40px,6vw,80px); margin-top:clamp(56px,7vw,90px); align-items:start;"
+  >
+    <!-- Índice lateral -->
+    <aside class="story-toc" style="position:sticky; top:90px;">
+      <div style={`${mono} color:var(--meta); margin-bottom:16px;`}>{s.tocLabel}</div>
+      <nav style="display:flex; flex-direction:column; gap:2px;">
+        {
+          s.chapters.map((c) => (
+            <a
+              href={`#${c.id}`}
+              data-toc={c.id}
+              class="toc-link lk"
+              style="display:flex; gap:10px; padding:7px 0; font-size:14px; color:var(--text-2); border-left:1px solid var(--rule); padding-left:14px;"
+            >
+              <span style="font-family:var(--font-mono); font-size:11px; color:var(--meta);">
+                {c.number}
+              </span>
+              {c.label}
+            </a>
+          ))
+        }
+      </nav>
+    </aside>
+
+    <!-- Artigo -->
+    <article style="max-width:720px;">
+      {
+        s.chapters.map((c) => (
+          <section id={c.id} style="scroll-margin-top:90px; padding-bottom:clamp(48px,6vw,80px);">
+            <div style="display:flex; align-items:baseline; gap:14px; border-top:1px solid var(--rule); padding-top:22px;">
+              <span style="font-family:var(--font-display); font-weight:600; font-size:15px; color:var(--accent);">
+                {c.number}
+              </span>
+              <span style={`${mono} color:var(--text-2);`}>{c.label}</span>
+            </div>
+            <h2 style="font-family:var(--font-display); font-weight:600; font-size:clamp(28px,3.4vw,44px); letter-spacing:-0.025em; line-height:1.02; margin:16px 0 0; color:var(--text);">
+              {c.title}
+            </h2>
+            {c.lead && (
+              <p style="font-family:var(--font-display); font-weight:500; font-size:clamp(17px,1.7vw,21px); line-height:1.4; color:var(--text-2); margin:14px 0 0; max-width:60ch;">
+                {c.lead}
+              </p>
+            )}
+
+            {c.paras &&
+              c.paras.map((p) => (
+                <p
+                  style={`font-size:17px; line-height:1.7; margin:22px 0 0; max-width:66ch; color:${c.todo ? "var(--meta)" : "var(--text-2)"}; ${c.todo ? "font-style:italic;" : ""}`}
+                >
+                  {p}
+                </p>
+              ))}
+
+            {c.beats &&
+              c.beats.map((b) => (
+                <div style="margin-top:36px;">
+                  <div
+                    style={`font-family:var(--font-mono); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:${b.todo ? "var(--accent)" : "var(--meta)"};`}
+                  >
+                    {b.label}
+                  </div>
+                  {b.paras.map((p) => (
+                    <p
+                      style={`font-size:16.5px; line-height:1.7; margin:10px 0 0; max-width:66ch; color:${b.todo ? "var(--meta)" : "var(--text-2)"}; ${b.todo ? "font-style:italic;" : ""}`}
+                    >
+                      {p}
+                    </p>
+                  ))}
+                </div>
+              ))}
+
+            {c.companies &&
+              c.companies.map((co) => (
+                <div style="margin-top:40px;">
+                  <div style="display:flex; flex-wrap:wrap; align-items:baseline; gap:12px; border-top:1px solid var(--rule); padding-top:20px;">
+                    <h3 style="font-family:var(--font-display); font-weight:600; font-size:clamp(22px,2.4vw,28px); letter-spacing:-0.02em; margin:0; color:var(--text);">
+                      {co.name}
+                    </h3>
+                    <span style={`${mono} color:var(--meta);`}>{co.period}</span>
+                  </div>
+                  <div style="font-size:14px; color:var(--text-2); margin-top:6px;">
+                    {co.role}
+                  </div>
+
+                  {co.beats.map((b) => (
+                    <div style="margin-top:24px;">
+                      <div
+                        style={`font-family:var(--font-mono); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:${b.todo ? "var(--accent)" : "var(--meta)"};`}
+                      >
+                        {b.label}
+                      </div>
+                      {b.paras.map((p) => (
+                        <p
+                          style={`font-size:16.5px; line-height:1.7; margin:8px 0 0; max-width:66ch; color:${b.todo ? "var(--meta)" : "var(--text-2)"}; ${b.todo ? "font-style:italic;" : ""}`}
+                        >
+                          {p}
+                        </p>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              ))}
+          </section>
+        ))
+      }
+
+      <!-- Fecho -->
+      <section style="border-top:1px solid var(--rule); padding-top:40px;">
+        <h2 style="font-family:var(--font-display); font-weight:600; font-size:clamp(24px,2.8vw,36px); letter-spacing:-0.02em; margin:0; color:var(--text);">
+          {s.closing.title}
+        </h2>
+        {
+          s.closing.paras.map((p) => (
+            <p style="font-size:17px; line-height:1.7; color:var(--text-2); margin:18px 0 0; max-width:66ch;">
+              {p}
+            </p>
+          ))
+        }
+        <a
+          href={contactHref}
+          class="cta-primary lk"
+          style={`${mono} color:var(--text); border:1px solid var(--rule-strong); padding:15px 24px; display:inline-block; margin-top:28px;`}
+          >{s.closing.ctaLabel}</a
+        >
+      </section>
+    </article>
+  </div>
+</main>
+
+<style>
+  @media (max-width: 900px) {
+    .story-grid {
+      grid-template-columns: 1fr !important;
+    }
+    .story-toc {
+      display: none !important;
+    }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var bar = document.getElementById("read-progress");
+    var links = Array.prototype.slice.call(
+      document.querySelectorAll("[data-toc]")
+    );
+    var sections = links
+      .map(function (l) {
+        return document.getElementById(l.getAttribute("data-toc"));
+      })
+      .filter(Boolean);
+
+    function onScroll() {
+      var h =
+        document.documentElement.scrollHeight - window.innerHeight;
+      var p = h > 0 ? (window.scrollY / h) * 100 : 0;
+      if (bar) bar.style.width = p + "%";
+
+      var active = sections[0];
+      for (var i = 0; i < sections.length; i++) {
+        if (sections[i].getBoundingClientRect().top <= 120) active = sections[i];
+      }
+      links.forEach(function (l) {
+        var on = active && l.getAttribute("data-toc") === active.id;
+        l.style.color = on ? "var(--text)" : "var(--text-2)";
+        l.style.borderLeftColor = on ? "var(--accent)" : "var(--rule)";
+      });
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    onScroll();
+  })();
+</script>

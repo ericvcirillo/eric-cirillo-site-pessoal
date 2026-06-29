@@ -1,0 +1,81 @@
+---
+import type { Content } from "../i18n";
+
+interface Props {
+  t: Content;
+}
+
+const { t } = Astro.props;
+const c = t.contact;
+const CV_FILE = "/docs/Eric_Cirillo_CV_2026.pdf";
+const monoLink =
+  "font-family:var(--font-mono); font-size:12px; letter-spacing:0.1em; color:var(--text-2);";
+const dlStyle =
+  "display:flex; justify-content:space-between; align-items:center; gap:20px; border:1px solid var(--rule-strong); border-radius:12px; background:var(--panel); box-shadow:var(--shadow); padding:20px 22px;";
+const dlLabel =
+  "font-family:var(--font-mono); font-size:12px; letter-spacing:0.13em; text-transform:uppercase; color:var(--text);";
+const dlExt = "font-family:var(--font-mono); font-size:11px; color:var(--text-2);";
+---
+
+<section id="contato" class="section">
+  <div class="container section-pad" style="position:relative;">
+    <span class="ghost-num" aria-hidden="true">05</span>
+    <div
+      class="two-col"
+      style="position:relative; z-index:1; display:grid; grid-template-columns:minmax(0,1.4fr) minmax(0,1fr); gap:clamp(40px,6vw,80px); align-items:start;"
+    >
+      <div>
+        <div
+          style="font-family:var(--font-mono); font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-2);"
+        >
+          {c.label}
+        </div>
+        {c.line && (
+          <p
+            style="font-family:var(--font-display); font-weight:500; font-size:clamp(22px,2.4vw,32px); line-height:1.25; letter-spacing:-0.015em; color:var(--text); margin:18px 0 0; max-width:24ch;"
+          >
+            {c.line}
+          </p>
+        )}
+        <a
+          href={`mailto:${c.email}`}
+          class="email-big lk"
+          style="display:inline-block; font-family:var(--font-display); font-weight:600; font-size:clamp(26px,4vw,52px); letter-spacing:-0.025em; color:var(--text); margin-top:28px;"
+          >{c.email}</a
+        >
+        <div style="display:flex; flex-wrap:wrap; gap:24px; margin-top:24px;">
+          <a
+            href={c.whatsappHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mono-link lk"
+            style={monoLink}>{c.whatsapp}</a
+          >
+          <a
+            href={c.linkedinUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mono-link lk"
+            style={monoLink}>{c.linkedin}</a
+          >
+          <span
+            style="font-family:var(--font-mono); font-size:12px; letter-spacing:0.1em; color:var(--meta);"
+            >{c.location}</span
+          >
+        </div>
+      </div>
+
+      <div>
+        <div
+          style="font-family:var(--font-mono); font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-2);"
+        >
+          {c.downloadsLabel}
+        </div>
+        <a href={CV_FILE} download class="dl lk" style={`${dlStyle} margin-top:16px;`}>
+          <span style={dlLabel}>{c.dl1}</span>
+          <span style={dlExt}>PDF</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

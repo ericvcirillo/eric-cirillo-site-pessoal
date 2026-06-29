@@ -1,0 +1,29 @@
+---
+import type { Content } from "../i18n";
+
+interface Props {
+  t: Content;
+}
+
+const { t } = Astro.props;
+---
+
+<section class="section">
+  <div
+    class="container"
+    style="display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr));"
+  >
+    {
+      t.stats.map((s) => (
+        <div style="padding:clamp(38px,5vw,58px) 24px clamp(38px,5vw,58px) 28px; border-left:1px solid var(--rule);">
+          <div style="font-family:var(--font-display); font-weight:600; font-size:clamp(40px,5vw,64px); line-height:1; letter-spacing:-0.03em; color:var(--text);">
+            {s.v}
+          </div>
+          <div style="font-family:var(--font-mono); font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--text-2); margin-top:13px;">
+            {s.l}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
