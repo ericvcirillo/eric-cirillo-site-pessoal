@@ -1,12 +1,13 @@
 ---
-import type { Content } from "../i18n";
+import type { Content, Locale } from "../i18n";
 
 interface Props {
   t: Content;
+  locale: Locale;
 }
 
-const { t } = Astro.props;
-const CV_FILE = "/docs/Eric_Cirillo_CV_2026.pdf";
+const { t, locale } = Astro.props;
+const CV_FILE = locale === "en" ? "/docs/Eric_Cirillo_CV_EN_2026.pdf" : "/docs/Eric_Cirillo_CV_2026.pdf";
 const mono =
   "font-family:var(--font-mono); font-size:11px; letter-spacing:0.16em; text-transform:uppercase;";
 ---

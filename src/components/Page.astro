@@ -22,13 +22,13 @@ const { locale, t } = Astro.props;
 <Base locale={locale} t={t}>
   <Header locale={locale} t={t} />
   <main id="main">
-    <Hero t={t} />
+    <Hero t={t} locale={locale} />
     <Stats t={t} />
     <About t={t} storyHref={locale === "pt" ? "/historia" : "/en/historia"} />
     <Experience t={t} detailHref={locale === "pt" ? "/experiencia" : "/en/experiencia"} />
     <Studio t={t} caseHref={locale === "pt" ? "/studio" : "/en/studio"} />
     <Skills t={t} />
-    <Contact t={t} />
+    <Contact t={t} locale={locale} />
   </main>
   <Footer t={t} />
 </Base>

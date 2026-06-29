@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Eric Cirillo, Resume 2026</title>
+    <style>
+      @page {
+        size: A4;
+        margin: 14mm 15mm;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        color: #1a1a1a;
+        font-size: 10pt;
+        line-height: 1.45;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .ink {
+        color: #0a0a0a;
+      }
+      .gray {
+        color: #6b6b6b;
+      }
+      .light {
+        color: #8a8a8a;
+      }
+
+      /* Header */
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 16px;
+      }
+      h1 {
+        font-size: 30pt;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        line-height: 1;
+        color: #0a0a0a;
+      }
+      .role {
+        margin-top: 6px;
+        font-size: 8.5pt;
+        letter-spacing: 0.02em;
+        color: #555;
+      }
+      .contact {
+        text-align: right;
+        font-size: 8.5pt;
+        line-height: 1.7;
+        color: #555;
+        white-space: nowrap;
+      }
+      hr {
+        border: none;
+        border-top: 1px solid #111;
+        margin: 10px 0 16px;
+      }
+      hr.thin {
+        border-top: 1px solid #e2e2e2;
+        margin: 0 0 12px;
+      }
+
+      /* Section label */
+      .label {
+        font-size: 8pt;
+        font-weight: 600;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: #9a9a9a;
+        margin: 18px 0 8px;
+      }
+      section:first-of-type .label {
+        margin-top: 4px;
+      }
+
+      p.body {
+        margin-bottom: 7px;
+        text-align: justify;
+      }
+      strong {
+        color: #0a0a0a;
+        font-weight: 700;
+      }
+
+      .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 12px;
+      }
+      .org {
+        font-size: 11pt;
+        font-weight: 700;
+        color: #0a0a0a;
+      }
+      .org .note {
+        font-size: 8.5pt;
+        font-weight: 400;
+        color: #8a8a8a;
+      }
+      .meta {
+        font-size: 8.5pt;
+        color: #8a8a8a;
+        white-space: nowrap;
+      }
+      .subrole {
+        font-size: 9pt;
+        color: #555;
+        margin: 1px 0 6px;
+      }
+      .stack {
+        font-size: 8.5pt;
+        color: #777;
+      }
+
+      ul {
+        list-style: none;
+        margin: 4px 0 2px;
+      }
+      ul li {
+        position: relative;
+        padding-left: 14px;
+        margin-bottom: 4px;
+      }
+      ul li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.62em;
+        width: 5px;
+        height: 1px;
+        background: #9a9a9a;
+      }
+
+      .block {
+        margin-bottom: 12px;
+      }
+
+      /* Skills table */
+      .skills div.line {
+        display: flex;
+        gap: 16px;
+        padding: 5px 0;
+        border-bottom: 1px solid #eee;
+      }
+      .skills .k {
+        flex: 0 0 130px;
+        font-size: 7.5pt;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #9a9a9a;
+        padding-top: 1px;
+      }
+      .skills .v {
+        flex: 1;
+        color: #333;
+      }
+
+      .edu .row {
+        padding: 4px 0;
+        border-bottom: 1px solid #eee;
+      }
+      .edu .course {
+        font-weight: 700;
+        color: #0a0a0a;
+      }
+
+      .ats {
+        margin-top: 14px;
+        font-size: 6.5pt;
+        line-height: 1.5;
+        color: #c0c0c0;
+        text-align: justify;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>
+        <h1>Eric Cirillo</h1>
+        <div class="role">
+          IMPLEMENTATION SPECIALIST &middot; IDENTITY &amp; FRAUD &middot;
+          PROFESSIONAL SERVICES
+        </div>
+      </div>
+      <div class="contact">
+        S&atilde;o Paulo, Brazil &middot; Fluent English<br />
+        (11) 95297-4255 &middot; ericvcirillo@gmail.com<br />
+        linkedin.com/in/ericirillo &middot; ericcirillo.com
+      </div>
+    </header>
+    <hr />
+
+    <section>
+      <div class="label">Summary</div>
+      <p class="body">
+        Identity &amp; Fraud implementation specialist with over six years in
+        Professional Services. Started in Nubank fraud operations, moved into
+        Professional Services at AllowMe, and currently serve as the technical
+        reference at Serasa Experian for the most complex projects. Supported
+        more than 100 clients across financial services, telecom, retail, and
+        betting, managing roughly 20 projects at the same time.
+      </p>
+      <p class="body">
+        I join the project after the contract is signed, learn the client
+        scenario, run the technical kickoff, support developers through REST API
+        and SDK integration, and follow everything through to production. I run
+        technical meetings in English regularly, including with teams in the
+        United States, India, and China.
+      </p>
+      <p class="body">
+        In recent years I have been using generative AI to build internal tools.
+        The most concrete result is Serasa Studio, a platform I built solo in
+        three weeks that is now used daily by Professional Services and Sales.
+      </p>
+    </section>
+
+    <section>
+      <div class="label">Featured Project</div>
+      <div class="row">
+        <div class="org">Serasa Studio, Identity &amp; Fraud</div>
+        <div class="stack">React &middot; Node.js &middot; REST APIs &middot; SDKs &middot; Claude Code</div>
+      </div>
+      <p class="body" style="margin-top: 6px">
+        Internal platform for testing, demonstrations, and troubleshooting of
+        Serasa Experian's Identity &amp; Fraud products. Conceived, architected,
+        and delivered solo in roughly three weeks using AI agents as a
+        development accelerator, turning years of operational knowledge into a
+        tool used daily by Professional Services and Sales.
+      </p>
+      <ul>
+        <li>
+          <strong>Solves a real problem.</strong> Before it, each specialist used
+          a different tool and demos depended on whoever knew Postman. Studio
+          centralizes testing, demos, troubleshooting, flows, and knowledge base
+          in a single environment.
+        </li>
+        <li>
+          <strong>11 products integrated with real API calls.</strong> Liveness,
+          Facial Biometrics, FaceMatch, Device Intelligence, Document Forensics,
+          Capture and OCR, Background Check, Fraud Score, Score Laranja, and LVS.
+        </li>
+        <li>
+          <strong>Data-driven architecture.</strong> Each product describes its
+          own authentication and call sequence. Adding a new product requires
+          minimal configuration, so the platform scales without rework.
+        </li>
+        <li>
+          Includes Demo mode with no credentials, Onboarding Builder that runs
+          complete journeys and generates a PDF report, and Flow Builder for
+          anti-fraud domain diagrams.
+        </li>
+        <li>
+          Recognized by leadership as one of the most relevant initiatives
+          presented to the internal AI Committee. Approved for corporate
+          publication.
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="label">Experience</div>
+
+      <div class="block">
+        <div class="row">
+          <div class="org">Serasa Experian</div>
+          <div class="meta">Jul/2024 - Present</div>
+        </div>
+        <div class="subrole">
+          Fraud Analyst III &middot; Professional Services, Anti-Fraud Solutions
+          &middot; Remote
+        </div>
+        <ul>
+          <li>
+            Technical reference for a client portfolio throughout the full
+            implementation cycle, from technical kickoff to production go-live.
+          </li>
+          <li>
+            Implement facial biometrics, liveness, device intelligence, document
+            forensics, OCR, and background check, among other products, combined
+            according to each client's onboarding flow.
+          </li>
+          <li>
+            Investigate bugs and unexpected behavior alongside product and
+            engineering teams until reaching root cause; this kind of case has
+            become a central part of my work.
+          </li>
+          <li>
+            Run technical meetings in English with teams in the United States,
+            India, and China.
+          </li>
+          <li>
+            Manage roughly 20 concurrent projects, each at a different stage
+            and with very different contexts.
+          </li>
+          <li>
+            Built Serasa Studio Identity &amp; Fraud, an internal platform that
+            centralizes testing, demonstrations, and troubleshooting of
+            anti-fraud products without depending on the engineering queue.
+          </li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <div class="row">
+          <div class="org">
+            AllowMe <span class="note">(acquired by Serasa Experian)</span>
+          </div>
+          <div class="meta">Oct/2022 - Apr/2024</div>
+        </div>
+        <div class="subrole">
+          Fraud Analyst II &middot; Professional Services, Anti-Fraud Solutions
+        </div>
+        <ul>
+          <li>
+            Learned to implement Identity &amp; Fraud solutions end to end,
+            accompanying enterprise clients from the first technical meeting to
+            stable operation.
+          </li>
+          <li>
+            Worked directly with client developers on REST API and SDK
+            integrations, helping debug calls and understand product behavior.
+          </li>
+          <li>
+            Shortly after FaceMatch launched, identified an undocumented bug in
+            testing, reproduced and documented it, and took it to the product
+            team, who confirmed the issue.
+          </li>
+          <li>
+            Participated in requirements gathering, onboarding flow definition,
+            and communication between product, engineering, and the client.
+          </li>
+          <li>
+            Supported the onboarding of new analysts and served as the team's
+            technical reference for integration questions.
+          </li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <div class="row">
+          <div class="org">Nubank</div>
+          <div class="meta">May/2019 - Jul/2021</div>
+        </div>
+        <div class="subrole">
+          Fraud Analyst II &middot; Fraud Analyst I &middot; Customer Excellence
+          Analyst
+        </div>
+        <ul>
+          <li>
+            Financial fraud operations at scale, covering KYC, document fraud,
+            transaction monitoring, and compliance. This is where I understood
+            how anti-fraud operations work from the inside.
+          </li>
+          <li>
+            Built dashboards and SQL queries for tracking operational indicators.
+          </li>
+          <li>
+            Participated in anti-fraud tool evaluations and initiatives
+            involving facial recognition and predictive models.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="skills">
+      <div class="label">Skills</div>
+      <div class="line">
+        <div class="k">Focus</div>
+        <div class="v">
+          Professional Services and end-to-end solution implementation &middot;
+          Identity &amp; Fraud
+        </div>
+      </div>
+      <div class="line">
+        <div class="k">Identity &amp; Fraud</div>
+        <div class="v">
+          KYC &middot; Facial Biometrics &middot; Liveness &middot; FaceMatch
+          &middot; Device Intelligence &middot; Document Forensics &middot; OCR
+          &middot; Background Check &middot; Fraud Score &middot; LVS
+        </div>
+      </div>
+      <div class="line">
+        <div class="k">Integration</div>
+        <div class="v">
+          REST APIs and SDKs &middot; Troubleshooting and bug investigation
+          &middot; Onboarding flow definition &middot; Technical kickoff
+          &middot; Full lifecycle until production
+        </div>
+      </div>
+      <div class="line">
+        <div class="k">Management</div>
+        <div class="v">
+          Stakeholder Management &middot; Technical documentation and training
+          &middot; International communication in English &middot; Multiple
+          concurrent project management
+        </div>
+      </div>
+      <div class="line">
+        <div class="k">Technology</div>
+        <div class="v">
+          SQL &middot; Python &middot; React &middot; JavaScript &middot; Node.js
+          &middot; Generative AI and coding agents (Claude Code, Cursor) &middot;
+          Rapid prototyping
+        </div>
+      </div>
+      <div class="line">
+        <div class="k">Languages</div>
+        <div class="v">
+          Portuguese, native &middot; English, fluent (international technical
+          meetings)
+        </div>
+      </div>
+    </section>
+
+    <section class="edu">
+      <div class="label">Education</div>
+      <div class="row">
+        <div>
+          <span class="course">MBA in Business Management</span>
+          <span class="gray">&middot; Universidade Cidade de S&atilde;o Paulo</span>
+        </div>
+        <div class="meta">2018 - 2020</div>
+      </div>
+      <div class="row">
+        <div>
+          <span class="course">Business Administration, Academic Laureate</span>
+          <span class="gray">&middot; Universidade Cidade de S&atilde;o Paulo</span>
+        </div>
+        <div class="meta">2016 - 2018</div>
+      </div>
+    </section>
+
+    <p class="ats">
+      Professional Services &middot; Implementation Specialist &middot; Technical
+      Consultant &middot; Solution Consultant &middot; Pre-Sales Engineer
+      &middot; Solutions Engineer &middot; Technical Account Manager &middot;
+      Identity &amp; Fraud &middot; Fraud Prevention &middot; KYC &middot;
+      Biometric Authentication &middot; Liveness Detection &middot; Document
+      Verification &middot; OCR &middot; Device Intelligence &middot; Background
+      Check &middot; Fraud Score &middot; API Integration &middot; REST API
+      &middot; SDK Integration &middot; Troubleshooting &middot; Customer
+      Onboarding &middot; Enterprise Clients &middot; Stakeholder Management
+      &middot; Technical Documentation &middot; SQL &middot; Python &middot;
+      React &middot; Node.js &middot; Generative AI &middot; Claude Code.
+    </p>
+  </body>
+</html>
